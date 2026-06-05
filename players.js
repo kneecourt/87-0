@@ -315,7 +315,7 @@ const teamYears = [
       { name: "Zeus", roles: ["IGL"], firepower: 66, consistency: 84, support: 89, igl: 95 },
       { name: "Guardian", roles: ["AWPer"], firepower: 97, consistency: 95 },
       { name: "flamie", roles: ["Rifler"], firepower: 91, consistency: 88 },
-      { name: "Edward", roles: ["Support"], firepower: 82, consistency: 88, support: 92 },
+      { name: "Edward", roles: ["Support", "Rifler"], firepower: 82, consistency: 88, support: 87 },
       { name: "seized", roles: ["Rifler", "IGL"], firepower: 85, consistency: 86 },
       { name: "s1mple", roles: ["Rifler", "AWPer"], firepower: 99, consistency: 94 },
     ]
