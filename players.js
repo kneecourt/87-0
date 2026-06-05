@@ -18,7 +18,7 @@ const teamYears = [
       { name: "TaZ", role: "IGL", firepower: 82, consistency: 86, support: 88, igl: 90, chemistry: 96 },
       { name: "NEO", role: "Rifler", firepower: 88, consistency: 90, support: 85, igl: 78, chemistry: 96 },
       { name: "pashaBiceps", role: "AWPer", firepower: 90, consistency: 84, support: 70, igl: 35, chemistry: 94 },
-      { name: "Snax", role: "Lurker", firepower: 91, consistency: 89, support: 82, igl: 55, chemistry: 95 },
+      { name: "Snax", role: "Rifler", firepower: 91, consistency: 89, support: 82, igl: 55, chemistry: 95 },
       { name: "byali", role: "Entry", firepower: 86, consistency: 84, support: 76, igl: 35, chemistry: 92 }
     ]
   },
@@ -27,7 +27,7 @@ const teamYears = [
     team: "Ninjas in Pyjamas",
     year: "2014",
     players: [
-      { name: "GeT_RiGhT", role: "Lurker", firepower: 96, consistency: 96, support: 82, igl: 45, chemistry: 98 },
+      { name: "GeT_RiGhT", role: "Rifler", firepower: 96, consistency: 96, support: 82, igl: 45, chemistry: 98 },
       { name: "f0rest", role: "Rifler", firepower: 95, consistency: 94, support: 78, igl: 45, chemistry: 97 },
       { name: "Xizt", role: "IGL", firepower: 82, consistency: 87, support: 86, igl: 91, chemistry: 96 },
       { name: "friberg", role: "Entry", firepower: 86, consistency: 84, support: 80, igl: 35, chemistry: 94 },
@@ -172,7 +172,7 @@ const teamYears = [
     year: "2019",
     players: [
       { name: "EliGE", role: "Rifler", firepower: 97, consistency: 94, support: 82, igl: 45, chemistry: 92 },
-      { name: "NAF", role: "Lurker", firepower: 94, consistency: 95, support: 84, igl: 45, chemistry: 92 },
+      { name: "NAF", role: "Rifler", firepower: 94, consistency: 95, support: 84, igl: 45, chemistry: 92 },
       { name: "Twistzz", role: "Rifler", firepower: 93, consistency: 91, support: 78, igl: 35, chemistry: 91 },
       { name: "nitr0", role: "IGL", firepower: 82, consistency: 86, support: 88, igl: 92, chemistry: 91 },
       { name: "Stewie2K", role: "Entry", firepower: 87, consistency: 84, support: 82, igl: 65, chemistry: 90 }
@@ -244,7 +244,7 @@ const teamYears = [
     year: "2022",
     players: [
       { name: "broky", role: "AWPer", firepower: 92, consistency: 92, support: 72, igl: 35, chemistry: 95 },
-      { name: "ropz", role: "Lurker", firepower: 94, consistency: 96, support: 84, igl: 45, chemistry: 97 },
+      { name: "ropz", role: "Rifler", firepower: 94, consistency: 96, support: 84, igl: 45, chemistry: 97 },
       { name: "Twistzz", role: "Rifler", firepower: 92, consistency: 91, support: 80, igl: 35, chemistry: 95 },
       { name: "rain", role: "Entry", firepower: 91, consistency: 88, support: 84, igl: 35, chemistry: 95 },
       { name: "karrigan", role: "IGL", firepower: 76, consistency: 84, support: 92, igl: 99, chemistry: 98 }
@@ -283,7 +283,7 @@ const teamYears = [
       { name: "apEX", role: "IGL", firepower: 78, consistency: 84, support: 90, igl: 96, chemistry: 95 },
       { name: "Magisk", role: "Rifler", firepower: 90, consistency: 92, support: 90, igl: 55, chemistry: 95 },
       { name: "dupreeh", role: "Entry", firepower: 86, consistency: 87, support: 86, igl: 50, chemistry: 94 },
-      { name: "Spinx", role: "Lurker", firepower: 93, consistency: 92, support: 80, igl: 35, chemistry: 94 }
+      { name: "Spinx", role: "Rifler", firepower: 93, consistency: 92, support: 80, igl: 35, chemistry: 94 }
     ]
   },
 
@@ -328,7 +328,7 @@ const teamYears = [
     year: "2025",
     players: [
       { name: "ZywOo", role: "AWPer", firepower: 100, consistency: 99, support: 75, igl: 40, chemistry: 97 },
-      { name: "ropz", role: "Lurker", firepower: 95, consistency: 96, support: 84, igl: 45, chemistry: 96 },
+      { name: "ropz", role: "Rifler", firepower: 95, consistency: 96, support: 84, igl: 45, chemistry: 96 },
       { name: "flameZ", role: "Entry", firepower: 91, consistency: 89, support: 82, igl: 35, chemistry: 94 },
       { name: "mezii", role: "Support", firepower: 84, consistency: 88, support: 94, igl: 65, chemistry: 94 },
       { name: "apEX", role: "IGL", firepower: 78, consistency: 84, support: 90, igl: 96, chemistry: 96 }
