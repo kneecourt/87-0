@@ -175,15 +175,17 @@ function simulateEra() {
   let resultText = "";
 
   if (eraScore >= 95) {
-    resultText = "Era-defining team";
+    resultText = "Generational era";
   } else if (eraScore >= 90) {
-    resultText = "Dynasty";
+    resultText = "Back to back Majors";
   } else if (eraScore >= 80) {
-    resultText = "Elite contender";
+    resultText = "Major champion";
   } else if (eraScore >= 70) {
-    resultText = "Good team";
+    resultText = "Fluke run";
+  } else if (eraScore >= 60) {
+    resultText = "Playoff merchants"
   } else {
-    resultText = "Failed project";
+    resultText = "Disband immediately";
   }
 
   document.getElementById("result").textContent =
