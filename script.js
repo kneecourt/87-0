@@ -68,7 +68,6 @@ function draftPlayer(player, teamYear) {
   }
 
   const remainingRoles = getRemainingRoles();
-
   let availableRoles = [];
 
   for (let i = 0; i < player.roles.length; i++) {
@@ -120,28 +119,6 @@ function draftPlayer(player, teamYear) {
     }
   }
 }
-
-  const draftedPlayer = {
-    ...player,
-    team: teamYear.team,
-    year: teamYear.year,
-    draftedRole: player.role
-  };
-
-  team.push(draftedPlayer);
-  updateTeam();
-
-  if (team.length < 5) {
-    showPlayers();
-  } else {
-    document.getElementById("player-options").innerHTML = "";
-    document.getElementById("draft-title").textContent = "Team complete";
-
-    const roleNeeded = document.getElementById("role-needed");
-    if (roleNeeded) {
-      roleNeeded.textContent = "All roles filled";
-    }
-  }
 
 function updateTeam() {
   const teamList = document.getElementById("team-list");
