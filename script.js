@@ -256,7 +256,23 @@ function simulateEra() {
     consistencyScore * 0.25;
 
   let cohesionScore = getCohesionScore();
-  eraScore += cohesionScore;
+  if (cohesionScore > 0) {
+    eraScore += cohesionScore;
+  }
+
+  let bestFirepower = Math.max(
+    awperPlayer.firepower,
+    riflers[0].firepower,
+    riflers[1].firepower
+  );
+
+  if (bestFirepower < 90) {
+    eraScore -= 5;
+  }
+
+  if (awperPlayer.firepower < 85) {
+    eraScore -= 4;
+  }
 
   eraScore = Math.round(eraScore);
 
@@ -299,6 +315,16 @@ function playAgain() {
   document.getElementById("play-again-button").style.display = "none";
 
   showPlayers();
+}
+
+function toggleHowToPlay() {
+  const panel = document.getElementById("how-to-play-panel");
+
+  if (panel.style.display === "block") {
+    panel.style.display = "none";
+  } else {
+    panel.style.display = "block";
+  }
 }
 
 showPlayers();
