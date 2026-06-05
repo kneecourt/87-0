@@ -47,3 +47,49 @@ li {
 #result {
   margin-top: 25px;
 }
+
+#how-to-play {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+#how-to-play h2 {
+  margin-bottom: 10px;
+}
+
+#how-to-play p {
+  line-height: 1.6;
+  color: #ccc;
+}
+
+#sidebar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+#sidebar button {
+  width: 120px;
+  padding: 10px;
+}
+
+#how-to-play-page {
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+#how-to-play-page h1,
+#how-to-play-page h2 {
+  text-align: left;
+}
+
+#how-to-play-page ul {
+  list-style: disc;
+  padding-left: 30px;
+}
