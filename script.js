@@ -1,9 +1,12 @@
 let team = [];
 let currentTeamYear = null;
 
+const requiredRoles = ["IGL", "AWPer", "Support", "Entry", "Rifler"];
+
 function showPlayers() {
   const optionsDiv = document.getElementById("player-options");
   const title = document.getElementById("draft-title");
+  const roleNeeded = document.getElementById("role-needed");
 
   optionsDiv.innerHTML = "";
 
@@ -11,6 +14,11 @@ function showPlayers() {
   currentTeamYear = teamYears[randomIndex];
 
   title.textContent = currentTeamYear.team + " - " + currentTeamYear.year;
+
+  if (roleNeeded) {
+    roleNeeded.textContent =
+      "Remaining Roles: " + getRemainingRoles().join(", ");
+  }
 
   for (let i = 0; i < currentTeamYear.players.length; i++) {
     const player = currentTeamYear.players[i];
@@ -26,9 +34,34 @@ function showPlayers() {
   }
 }
 
+function getRemainingRoles() {
+  let remainingRoles = [];
+
+  for (let i = 0; i < requiredRoles.length; i++) {
+    let roleTaken = false;
+
+    for (let j = 0; j < team.length; j++) {
+      if (team[j].draftedRole === requiredRoles[i]) {
+        roleTaken = true;
+      }
+    }
+
+    if (roleTaken === false) {
+      remainingRoles.push(requiredRoles[i]);
+    }
+  }
+
+  return remainingRoles;
+}
+
 function draftPlayer(player, teamYear) {
   if (team.length >= 5) {
     alert("Your team already has 5 players.");
+    return;
+  }
+
+  if (!requiredRoles.includes(player.role)) {
+    alert(player.role + " is not a valid draft slot.");
     return;
   }
 
@@ -37,12 +70,18 @@ function draftPlayer(player, teamYear) {
       alert("You already drafted " + player.name + " from another year.");
       return;
     }
+
+    if (team[i].draftedRole === player.role) {
+      alert("You already filled the " + player.role + " slot.");
+      return;
+    }
   }
 
   const draftedPlayer = {
     ...player,
     team: teamYear.team,
-    year: teamYear.year
+    year: teamYear.year,
+    draftedRole: player.role
   };
 
   team.push(draftedPlayer);
@@ -53,6 +92,11 @@ function draftPlayer(player, teamYear) {
   } else {
     document.getElementById("player-options").innerHTML = "";
     document.getElementById("draft-title").textContent = "Team complete";
+
+    const roleNeeded = document.getElementById("role-needed");
+    if (roleNeeded) {
+      roleNeeded.textContent = "All roles filled";
+    }
   }
 }
 
@@ -62,9 +106,10 @@ function updateTeam() {
 
   for (let i = 0; i < team.length; i++) {
     const item = document.createElement("li");
+
     item.textContent =
+      team[i].draftedRole + ": " +
       team[i].name + " - " +
-      team[i].role + " - " +
       team[i].team + " " +
       team[i].year;
 
@@ -84,28 +129,12 @@ function simulateEra() {
   let iglTotal = 0;
   let chemistryTotal = 0;
 
-  let awperCount = 0;
-  let iglCount = 0;
-  let supportCount = 0;
-
   for (let i = 0; i < team.length; i++) {
     firepowerTotal += team[i].firepower;
     consistencyTotal += team[i].consistency;
     supportTotal += team[i].support;
     iglTotal += team[i].igl;
     chemistryTotal += team[i].chemistry;
-
-    if (team[i].role === "AWPer") {
-      awperCount++;
-    }
-
-    if (team[i].role === "IGL") {
-      iglCount++;
-    }
-
-    if (team[i].role === "Support") {
-      supportCount++;
-    }
   }
 
   let firepowerScore = firepowerTotal / 5;
@@ -120,18 +149,6 @@ function simulateEra() {
     supportScore * 0.15 +
     iglScore * 0.20 +
     chemistryScore * 0.10;
-
-  if (iglCount === 0) {
-    eraScore -= 15;
-  }
-
-  if (supportCount === 0) {
-    eraScore -= 10;
-  }
-
-  if (awperCount > 1) {
-    eraScore -= 8;
-  }
 
   eraScore = Math.round(eraScore);
 
@@ -153,11 +170,11 @@ function simulateEra() {
     "Era Score: " + eraScore + " - " + resultText;
 
   document.getElementById("play-again-button").style.display = "block";
-
 }
 
 function playAgain() {
   team = [];
+  currentTeamYear = null;
 
   document.getElementById("team-list").innerHTML = "";
   document.getElementById("result").textContent = "";
@@ -165,4 +182,5 @@ function playAgain() {
 
   showPlayers();
 }
-  showPlayers();
+
+showPlayers();
