@@ -316,7 +316,7 @@ const teamYears = [
       { name: "Guardian", roles: ["AWPer"], firepower: 97, consistency: 95 },
       { name: "flamie", roles: ["Rifler"], firepower: 91, consistency: 88 },
       { name: "Edward", roles: ["Support", "Rifler"], firepower: 82, consistency: 88, support: 87 },
-      { name: "seized", roles: ["Rifler", "IGL"], firepower: 85, consistency: 86 },
+      { name: "seized", roles: ["Rifler", "IGL"], firepower: 85, consistency: 86, igl: 86 },
       { name: "s1mple", roles: ["Rifler", "AWPer"], firepower: 99, consistency: 94 },
     ]
   },
@@ -407,7 +407,7 @@ const teamYears = [
     players: [
       { name: "NiKo", roles: ["Rifler"], firepower: 100, consistency: 97 },
       { name: "huNter-", roles: ["Rifler"], firepower: 89, consistency: 88 },
-      { name: "AmaNEk", roles: ["Support"], firepower: 75, consistency: 85, support: 91 },
+      { name: "AmaNEk", roles: ["AWPer"], firepower: 75, consistency: 85, support: 91 },
       { name: "JaCkz", roles: ["Rifler"], firepower: 82, consistency: 82 },
       { name: "nexa", roles: ["IGL", "Support"], firepower: 78, consistency: 84, support: 89, igl: 88 }
     ]
