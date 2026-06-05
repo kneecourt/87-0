@@ -172,15 +172,15 @@ function getCohesionScore() {
   }
 
   if (largestCore >= 5) {
-    return 8;
-  } else if (largestCore === 4) {
     return 5;
+  } else if (largestCore === 4) {
+    return 3;
   } else if (largestCore === 3) {
-    return 2;
+    return 1;
   } else if (largestCore === 2) {
-    return -3;
+    return -1;
   } else {
-    return -7;
+    return -3;
   }
 }
 
