@@ -1,7 +1,7 @@
 let team = [];
 let currentTeamYear = null;
 
-const requiredRoles = ["IGL", "AWPer", "Support", "Entry", "Rifler"];
+const requiredRoles = ["IGL", "AWPer", "Support", "Rifler", "Rifler"];
 
 function showPlayers() {
   const optionsDiv = document.getElementById("player-options");
