@@ -1,7 +1,13 @@
 let team = [];
 let currentTeamYear = null;
 
-const requiredRoles = ["IGL", "AWPer", "Support", "Rifler", "Rifler"];
+const requiredRoles = [
+  { slot: "IGL", role: "IGL" },
+  { slot: "AWPer", role: "AWPer" },
+  { slot: "Support", role: "Support" },
+  { slot: "Rifler 1", role: "Rifler" },
+  { slot: "Rifler 2", role: "Rifler" }
+];
 
 function showPlayers() {
   const optionsDiv = document.getElementById("player-options");
@@ -17,7 +23,7 @@ function showPlayers() {
 
   if (roleNeeded) {
     roleNeeded.textContent =
-      "Remaining Roles: " + getRemainingRoles().join(", ");
+      "Remaining Roles: " + getRemainingRoles().map(role => role.slot).join(", ");
   }
 
   for (let i = 0; i < currentTeamYear.players.length; i++) {
@@ -38,15 +44,15 @@ function getRemainingRoles() {
   let remainingRoles = [];
 
   for (let i = 0; i < requiredRoles.length; i++) {
-    let roleTaken = false;
+    let slotTaken = false;
 
     for (let j = 0; j < team.length; j++) {
-      if (team[j].draftedRole === requiredRoles[i]) {
-        roleTaken = true;
+      if (team[j].draftedSlot === requiredRoles[i].slot) {
+        slotTaken = true;
       }
     }
 
-    if (roleTaken === false) {
+    if (slotTaken === false) {
       remainingRoles.push(requiredRoles[i]);
     }
   }
@@ -70,9 +76,9 @@ function draftPlayer(player, teamYear) {
   const remainingRoles = getRemainingRoles();
   let availableRoles = [];
 
-  for (let i = 0; i < player.roles.length; i++) {
-    if (remainingRoles.includes(player.roles[i])) {
-      availableRoles.push(player.roles[i]);
+  for (let i = 0; i < remainingRoles.length; i++) {
+    if (player.roles.includes(remainingRoles[i].role)) {
+    availableRoles.push(remainingRoles[i]);
     }
   }
 
@@ -81,17 +87,23 @@ function draftPlayer(player, teamYear) {
     return;
   }
 
-  let chosenRole = "";
+  let chosenSlot = null;
 
   if (availableRoles.length === 1) {
-    chosenRole = availableRoles[0];
+    chosenSlot = availableRoles[0];
   } else {
-    chosenRole = prompt(
-      player.name + " can fit multiple roles. Choose one: " +
-      availableRoles.join(", ")
+    const choice = prompt(
+      player.name + " can fit multiple slots. Choose one: " +
+      availableRoles.map(role => role.slot).join(", ")
     );
 
-    if (!availableRoles.includes(chosenRole)) {
+    for (let i = 0; i < availableRoles.length; i++) {
+      if (availableRoles[i].slot === choice) {
+        chosenSlot = availableRoles[i];
+      }
+    }
+
+    if (chosenSlot === null) {
       alert("Invalid role choice.");
       return;
     }
@@ -101,7 +113,8 @@ function draftPlayer(player, teamYear) {
     ...player,
     team: teamYear.team,
     year: teamYear.year,
-    draftedRole: chosenRole
+    draftedRole: chosenSlot.role,
+    draftedSlot: chosenSlot.slot
   };
 
   team.push(draftedPlayer);
@@ -128,7 +141,7 @@ function updateTeam() {
     const item = document.createElement("li");
 
     item.textContent =
-      team[i].draftedRole + ": " +
+      team[i].draftedSlot + ": " +
       team[i].name + " - " +
       team[i].team + " " +
       team[i].year;
@@ -179,7 +192,7 @@ function simulateEra() {
   } else if (eraScore >= 90) {
     resultText = "Back to back Majors";
   } else if (eraScore >= 80) {
-    resultText = "Major champion";
+    resultText = "Major champions";
   } else if (eraScore >= 70) {
     resultText = "Fluke run";
   } else if (eraScore >= 60) {
