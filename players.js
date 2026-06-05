@@ -255,7 +255,7 @@ const teamYears = [
     team: "Outsiders",
     year: "2022",
     players: [
-      { name: "Jame", roles: ["IGL"], firepower: 90, consistency: 93, support: 82, igl: 95 },
+      { name: "Jame", roles: ["IGL", "AWPer"], firepower: 90, consistency: 93, support: 82, igl: 95 },
       { name: "FL1T", roles: ["Rifler"], firepower: 89, consistency: 87 },
       { name: "fame", roles: ["Rifler"], firepower: 92, consistency: 86 },
       { name: "n0rb3r7", roles: ["Rifler"], firepower: 87, consistency: 82 },
