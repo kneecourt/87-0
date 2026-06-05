@@ -159,7 +159,7 @@ const teamYears = [
     team: "Natus Vincere",
     year: "2021",
     players: [
-      { name: "s1mple", roles: ["AWPer"], firepower: 100, consistency: 99 },
+      { name: "s1mple", roles: ["AWPer", "Rifler"], firepower: 100, consistency: 99 },
       { name: "electroNic", roles: ["Rifler"], firepower: 97, consistency: 95 },
       { name: "b1t", roles: ["Rifler", "Support"], firepower: 94, consistency: 93, support: 80 },
       { name: "Perfecto", roles: ["Support"], firepower: 82, consistency: 91, support: 98 },
