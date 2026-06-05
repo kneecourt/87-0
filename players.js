@@ -303,8 +303,8 @@ const teamYears = [
       { name: "Zeus", roles: ["IGL"], firepower: 66, consistency: 84, support: 89, igl: 95 },
       { name: "Guardian", roles: ["AWPer"], firepower: 97, consistency: 95 },
       { name: "flamie", roles: ["Rifler"], firepower: 91, consistency: 88 },
-      { name: "Edward", roles: ["Rifler"], firepower: 82, consistency: 88, support: 92 },
-      { name: "seized", roles: ["Support"], firepower: 85, consistency: 86 }
+      { name: "Edward", roles: ["Rifler"], firepower: 82, consistency: 88 },
+      { name: "seized", roles: ["Support"], firepower: 85, consistency: 86, support: 92 }
     ]
   },
 
