@@ -24,7 +24,7 @@ function showPlayers() {
     const player = currentTeamYear.players[i];
 
     const button = document.createElement("button");
-    button.textContent = player.name + " | " + player.role;
+    button.textContent = player.name + " | " + player.roles.join(" / ");
 
     button.onclick = function () {
       draftPlayer(player, currentTeamYear);
@@ -60,22 +60,66 @@ function draftPlayer(player, teamYear) {
     return;
   }
 
-  if (!requiredRoles.includes(player.role)) {
-    alert(player.role + " is not a valid draft slot.");
-    return;
-  }
-
   for (let i = 0; i < team.length; i++) {
     if (team[i].name === player.name) {
       alert("You already drafted " + player.name + " from another year.");
       return;
     }
+  }
 
-    if (team[i].draftedRole === player.role) {
-      alert("You already filled the " + player.role + " slot.");
+  const remainingRoles = getRemainingRoles();
+
+  let availableRoles = [];
+
+  for (let i = 0; i < player.roles.length; i++) {
+    if (remainingRoles.includes(player.roles[i])) {
+      availableRoles.push(player.roles[i]);
+    }
+  }
+
+  if (availableRoles.length === 0) {
+    alert(player.name + " does not fit any remaining role slot.");
+    return;
+  }
+
+  let chosenRole = "";
+
+  if (availableRoles.length === 1) {
+    chosenRole = availableRoles[0];
+  } else {
+    chosenRole = prompt(
+      player.name + " can fit multiple roles. Choose one: " +
+      availableRoles.join(", ")
+    );
+
+    if (!availableRoles.includes(chosenRole)) {
+      alert("Invalid role choice.");
       return;
     }
   }
+
+  const draftedPlayer = {
+    ...player,
+    team: teamYear.team,
+    year: teamYear.year,
+    draftedRole: chosenRole
+  };
+
+  team.push(draftedPlayer);
+  updateTeam();
+
+  if (team.length < 5) {
+    showPlayers();
+  } else {
+    document.getElementById("player-options").innerHTML = "";
+    document.getElementById("draft-title").textContent = "Team complete";
+
+    const roleNeeded = document.getElementById("role-needed");
+    if (roleNeeded) {
+      roleNeeded.textContent = "All roles filled";
+    }
+  }
+}
 
   const draftedPlayer = {
     ...player,
@@ -98,7 +142,6 @@ function draftPlayer(player, teamYear) {
       roleNeeded.textContent = "All roles filled";
     }
   }
-}
 
 function updateTeam() {
   const teamList = document.getElementById("team-list");
