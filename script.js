@@ -91,9 +91,19 @@ function draftPlayer(player, teamYear) {
 
   if (availableRoles.length === 1) {
     chosenSlot = availableRoles[0];
-  } else {
+  }
+
+  // Auto-assign if all available slots are the same role
+  else if (
+    availableRoles.every(role => role.role === availableRoles[0].role)
+  ) {
+    chosenSlot = availableRoles[0];
+  }
+
+  // Otherwise ask the user
+  else {
     const choice = prompt(
-      player.name + " can fit multiple slots. Choose one: " +
+      player.name + " can fit multiple roles. Choose one: " +
       availableRoles.map(role => role.slot).join(", ")
     );
 
@@ -260,7 +270,7 @@ function simulateEra() {
 
   let resultText = "";
 
-  if (eraScore >= 97) {
+  if (eraScore >= 96) {
     resultText = "Generational era";
   } else if (eraScore >= 93) {
     resultText = "Back to back Majors";
