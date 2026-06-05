@@ -6,8 +6,8 @@ const teamYears = [
       { name: "pronax", roles: ["IGL"], firepower: 72, consistency: 85, support: 88, igl: 94 },
       { name: "JW", roles: ["AWPer"], firepower: 95, consistency: 88 },
       { name: "flusha", roles: ["Rifler"], firepower: 90, consistency: 94, support: 95 },
-      { name: "KRIMZ", roles: ["Support", "Rifler"], firepower: 88, consistency: 95, support: 98 },
-      { name: "Devilwalk", roles: ["Rifler"], firepower: 78, consistency: 82 }
+      { name: "schneider", roles: ["Rifler"], firepower: 92, consistency: 95 },
+      { name: "Devilwalk", roles: ["Support", "Rifler"], firepower: 78, consistency: 82, support: 98 }
     ]
   },
 
@@ -27,11 +27,12 @@ const teamYears = [
     team: "Ninjas in Pyjamas",
     year: "2014",
     players: [
-      { name: "Xizt", roles: ["IGL"], firepower: 75, consistency: 87, support: 88, igl: 90 },
+      { name: "Xizt", roles: ["IGL", "Support"], firepower: 75, consistency: 87, support: 88, igl: 90 },
       { name: "f0rest", roles: ["Rifler"], firepower: 97, consistency: 95 },
       { name: "GeT_RiGhT", roles: ["Rifler"], firepower: 94, consistency: 96, support: 97 },
       { name: "friberg", roles: ["Rifler"], firepower: 84, consistency: 84 },
-      { name: "Fifflaren", roles: ["AWPer", "Support"], firepower: 75, consistency: 82, support: 90 }
+      { name: "Fifflaren", roles: ["AWPer", "Support"], firepower: 75, consistency: 82, support: 90 },
+      { name: "Maikelele", roles: ["AWPer"], firepower: 82, consistency: 82 }
     ]
   },
 
@@ -39,10 +40,14 @@ const teamYears = [
     team: "LDLC",
     year: "2014",
     players: [
-      { name: "Happy", roles: ["IGL"], firepower: 85, consistency: 87, support: 86, igl: 92 },
-      { name: "shox", roles: ["Rifler"], firepower: 97, consistency: 92 },
+      { name: "Happy", roles: ["IGL"], firepower: 89, consistency: 87, support: 86, igl: 92 },
+      { name: "shox", roles: ["Rifler"], firepower: 97, consistency: 95 },
+      { name: "apEX", roles: ["Rifler"], firepower: 96, consistency: 90 },
       { name: "NBK-", roles: ["Support", "Rifler"], firepower: 88, consistency: 90, support: 93 },
-      { name: "kioShiMa", roles: ["Support"], firepower: 82, consistency: 88, support: 91 },
+      { name: "Maniac", roles: ["Support", "Rifler"], firepower: 85, consistency: 88, support: 90 },
+      { name: "kioShiMa", roles: ["Rifler"], firepower: 88, consistency: 88, support: 91 },
+      { name: "Uzzziii", roles: ["Rifler"], firepower: 82, consistency: 88, support: 91 },
+      { name: "SmithZz", roles: ["Rifler", "AWPer"], firepower: 88, consistency: 85 },
       { name: "SmithZz", roles: ["AWPer"], firepower: 84, consistency: 85 }
     ]
   },
@@ -51,11 +56,12 @@ const teamYears = [
     team: "Fnatic",
     year: "2015",
     players: [
-      { name: "pronax", roles: ["IGL"], firepower: 73, consistency: 86, support: 88, igl: 95 },
+      { name: "pronax", roles: ["IGL"], firepower: 71, consistency: 86, support: 88, igl: 95 },
       { name: "JW", roles: ["AWPer"], firepower: 97, consistency: 90 },
       { name: "flusha", roles: ["Rifler"], firepower: 92, consistency: 95, support: 95 },
       { name: "KRIMZ", roles: ["Support", "Rifler"], firepower: 91, consistency: 97, support: 99 },
-      { name: "olofmeister", roles: ["Rifler"], firepower: 99, consistency: 96 }
+      { name: "olofmeister", roles: ["Rifler"], firepower: 99, consistency: 96 },
+      { name: "dennis", roles: ["Rifler"], firepower: 90, consistency: 96 }
     ]
   },
 
@@ -63,11 +69,13 @@ const teamYears = [
     team: "EnVyUs",
     year: "2015",
     players: [
-      { name: "Happy", roles: ["IGL"], firepower: 84, consistency: 86, support: 85, igl: 92 },
+      { name: "Happy", roles: ["IGL", "AWPer"], firepower: 84, consistency: 86, support: 85, igl: 92 },
       { name: "kennyS", roles: ["AWPer"], firepower: 100, consistency: 90 },
+      { name: "SmithZz", roles: ["AWPer"], firepower: 84, consistency: 85 },
       { name: "apEX", roles: ["Rifler"], firepower: 95, consistency: 86 },
       { name: "NBK-", roles: ["Support"], firepower: 87, consistency: 89, support: 94 },
-      { name: "kioShiMa", roles: ["Rifler"], firepower: 81, consistency: 88, support: 92 }
+      { name: "kioShiMa", roles: ["Rifler"], firepower: 81, consistency: 88, support: 92 },
+      { name: "shox", roles: ["Rifler"], firepower: 97, consistency: 92 }
     ]
   },
   
@@ -88,6 +96,7 @@ const teamYears = [
     year: "2016",
     players: [
       { name: "FalleN", roles: ["IGL", "AWPer"], firepower: 94, consistency: 93, support: 88, igl: 97 },
+      { name: "fox", roles: ["AWPer"], firepower: 89, consistency: 88 },
       { name: "coldzera", roles: ["Rifler"], firepower: 100, consistency: 99 },
       { name: "fer", roles: ["Rifler"], firepower: 95, consistency: 90 },
       { name: "fnx", roles: ["Rifler"], firepower: 87, consistency: 84 },
@@ -111,9 +120,10 @@ const teamYears = [
     team: "Gambit",
     year: "2017",
     players: [
-      { name: "Dosia", roles: ["Support"], firepower: 80, consistency: 83, support: 92 },
+      { name: "Dosia", roles: ["Support"], firepower: 80, consistency: 83, support: 92, igl: 81 },
       { name: "AdreN", roles: ["Rifler"], firepower: 91, consistency: 89 },
       { name: "mou", roles: ["AWPer"], firepower: 88, consistency: 85 },
+      { name: "fitch", roles: ["Rifler"], firepower: 86, consistency: 85 },
       { name: "HObbit", roles: ["Rifler"], firepower: 93, consistency: 88 },
       { name: "Zeus", roles: ["IGL"], firepower: 65, consistency: 84, support: 90, igl: 95 }
     ]
@@ -123,10 +133,14 @@ const teamYears = [
     team: "Cloud9",
     year: "2018",
     players: [
-      { name: "tarik", roles: ["IGL"], firepower: 88, consistency: 86, support: 82, igl: 89 },
+      { name: "tarik", roles: ["IGL", "Rifler"], firepower: 88, consistency: 86, support: 82, igl: 89 },
+      { name: "FNS", roles: ["IGL"], firepower: 70, consistency: 81, support: 84, igl: 87 },
+      { name: "Golden", roles: ["IGL"], firepower: 71, consistency: 84, support: 89, igl: 91 },
       { name: "Skadoodle", roles: ["AWPer"], firepower: 84, consistency: 83 },
       { name: "Stewie2K", roles: ["Rifler"], firepower: 91, consistency: 84 },
-      { name: "autimatic", roles: ["Rifler"], firepower: 94, consistency: 91 },
+      { name: "autimatic", roles: ["Rifler", "AWPer"], firepower: 94, consistency: 91 },
+      { name: "kioShiMa", roles: ["Rifler"], firepower: 83, consistency: 91 },
+      { name: "STYKO", roles: ["Support"], firepower: 77, consistency: 91, support: 90 },
       { name: "RUSH", roles: ["Support"], firepower: 80, consistency: 85, support: 90 }
     ]
   },
@@ -138,6 +152,7 @@ const teamYears = [
       { name: "gla1ve", roles: ["IGL"], firepower: 82, consistency: 92, support: 91, igl: 99 },
       { name: "device", roles: ["AWPer"], firepower: 98, consistency: 99 },
       { name: "dupreeh", roles: ["Rifler"], firepower: 94, consistency: 92 },
+      { name: "Kjaerbye", roles: ["Rifler"], firepower: 90, consistency: 87 },
       { name: "Magisk", roles: ["Rifler", "Support"], firepower: 94, consistency: 91, support: 88 },
       { name: "Xyp9x", roles: ["Support"], firepower: 84, consistency: 95, support: 100 }
     ]
@@ -185,8 +200,9 @@ const teamYears = [
     players: [
       { name: "Jame", roles: ["IGL", "AWPer"], firepower: 90, consistency: 95, support: 85, igl: 95 },
       { name: "FL1T", roles: ["Rifler"], firepower: 88, consistency: 87 },
-      { name: "fame", roles: ["Rifler"], firepower: 86, consistency: 85 },
-      { name: "n0rb3r7", roles: ["Support"], firepower: 78, consistency: 82, support: 92 },
+      { name: "fame", roles: ["Rifler"], firepower: 92, consistency: 85 },
+      { name: "YEKINDAR", roles: ["Rifler"], firepower: 94, consistency: 83 },
+      { name: "n0rb3r7", roles: ["Rifler"], firepower: 78, consistency: 82, support: 92 },
       { name: "Qikert", roles: ["Rifler", "Support"], firepower: 82, consistency: 84, support: 88 }
     ]
   },
@@ -197,7 +213,8 @@ const teamYears = [
     players: [
       { name: "ZywOo", roles: ["AWPer", "Rifler"], firepower: 100, consistency: 99 },
       { name: "Spinx", roles: ["Rifler"], firepower: 94, consistency: 92 },
-      { name: "flameZ", roles: ["Rifler"], firepower: 91, consistency: 89 },
+      { name: "flameZ", roles: ["Rifler"], firepower: 95, consistency: 93 },
+      { name: "dupreeh", roles: ["Rifler"], firepower: 88, consistency: 89 },
       { name: "Magisk", roles: ["Support", "Rifler"], firepower: 88, consistency: 91, support: 90 },
       { name: "apEX", roles: ["IGL"], firepower: 82, consistency: 86, support: 88, igl: 96 }
     ]
@@ -247,7 +264,7 @@ const teamYears = [
   players: [
     { name: "Xizt", roles: ["IGL"], firepower: 76, consistency: 88, support: 88, igl: 90 },
     { name: "f0rest", roles: ["Rifler"], firepower: 96, consistency: 95 },
-    { name: "GeT_RiGhT", roles: ["Support", "Rifler"], firepower: 97, consistency: 99, support: 99 },
+    { name: "GeT_RiGhT", roles: ["Rifler"], firepower: 97, consistency: 99, support: 99 },
     { name: "friberg", roles: ["Rifler"], firepower: 85, consistency: 85 },
     { name: "Fifflaren", roles: ["AWPer", "Support"], firepower: 74, consistency: 81, support: 89 }
     ]
@@ -261,7 +278,9 @@ const teamYears = [
       { name: "JW", roles: ["AWPer"], firepower: 95, consistency: 88 },
       { name: "flusha", roles: ["Rifler"], firepower: 89, consistency: 93, support: 94 },
       { name: "KRIMZ", roles: ["Support", "Rifler"], firepower: 87, consistency: 94, support: 98 },
-      { name: "olofmeister", roles: ["Rifler"], firepower: 95, consistency: 92 }
+      { name: "olofmeister", roles: ["Rifler"], firepower: 95, consistency: 92 },
+      { name: "schneider", roles: ["Rifler"], firepower: 87, consistency: 88 },
+      { name: "Devilwalk", roles: ["Support", "Rifler"], firepower: 78, consistency: 82, support: 98 }
     ]
   },
 
@@ -308,7 +327,8 @@ const teamYears = [
     players: [
       { name: "s1mple", roles: ["Rifler", "AWPer"], firepower: 99, consistency: 94 },
       { name: "EliGE", roles: ["Rifler"], firepower: 91, consistency: 88 },
-      { name: "nitr0", roles: ["IGL"], firepower: 84, consistency: 84, support: 84, igl: 88 },
+      { name: "nitr0", roles: ["Rifler", "IGL"], firepower: 84, consistency: 84, support: 84, igl: 84 },
+      { name: "adreN", roles: ["AWPer", "IGL"], firepower: 85, consistency: 82, igl: 82 },
       { name: "jdm64", roles: ["AWPer"], firepower: 85, consistency: 82 },
       { name: "Hiko", roles: ["Support"], firepower: 80, consistency: 90, support: 94 }
     ]
@@ -331,9 +351,13 @@ const teamYears = [
     year: "2017",
     players: [
       { name: "steel", roles: ["IGL", "Support"], firepower: 78, consistency: 84, support: 88, igl: 86 },
+      { name: "horvy", roles: ["IGL"], firepower: 64, consistency: 84, support: 77, igl: 76 },
       { name: "HEN1", roles: ["AWPer"], firepower: 91, consistency: 87 },
-      { name: "LUCAS1", roles: ["Rifler", "Support"], firepower: 83, consistency: 84, support: 86 },
+      { name: "zqk", roles: ["AWPer"], firepower: 71, consistency: 85 },
+      { name: "LUCAS1", roles: ["Rifler", "Support"], firepower: 89, consistency: 84, support: 86 },
+      { name: "shz", roles: ["Rifler", "Support"], firepower: 69, consistency: 84, support: 65 },
       { name: "boltz", roles: ["Rifler"], firepower: 88, consistency: 87 },
+      { name: "fnx", roles: ["Rifler"], firepower: 90, consistency: 89 },
       { name: "kNgV-", roles: ["Rifler", "AWPer"], firepower: 90, consistency: 84 }
     ]
   },
@@ -370,6 +394,8 @@ const teamYears = [
       { name: "Jame", roles: ["IGL", "AWPer"], firepower: 90, consistency: 95, support: 85, igl: 95 },
       { name: "qikert", roles: ["Rifler", "Support"], firepower: 85, consistency: 86, support: 88 },
       { name: "buster", roles: ["Rifler"], firepower: 87, consistency: 88 },
+      { name: "KrizzeN", roles: ["Rifler"], firepower: 82, consistency: 86 },
+      { name: "fitch", roles: ["Rifler"], firepower: 81, consistency: 88 },
       { name: "SANJI", roles: ["Support"], firepower: 70, consistency: 82, support: 98 },
       { name: "AdreN", roles: ["Rifler"], firepower: 88, consistency: 86 }
     ]
@@ -392,8 +418,9 @@ const teamYears = [
     year: "2022",
     players: [
       { name: "cadiaN", roles: ["IGL", "AWPer"], firepower: 89, consistency: 91, support: 86, igl: 95 },
-      { name: "stavn", roles: ["Rifler"], firepower: 93, consistency: 90 },
-      { name: "jabbi", roles: ["Rifler"], firepower: 88, consistency: 86 },
+      { name: "stavn", roles: ["Rifler"], firepower: 93, consistency: 89 },
+      { name: "jabbi", roles: ["Rifler"], firepower: 90, consistency: 86 },
+      { name: "refrezh", roles: ["Rifler"], firepower: 88, consistency: 86 },
       { name: "TeSeS", roles: ["Support", "Rifler"], firepower: 86, consistency: 87, support: 84 },
       { name: "sjuush", roles: ["Support"], firepower: 80, consistency: 89, support: 94 }
     ]
@@ -420,7 +447,10 @@ const teamYears = [
       { name: "iM", roles: ["Rifler"], firepower: 96, consistency: 89 },
       { name: "Keoz", roles: ["Support"], firepower: 78, consistency: 82, support: 88 },
       { name: "isak", roles: ["Rifler"], firepower: 84, consistency: 84 },
-      { name: "siuhy", roles: ["IGL"], firepower: 78, consistency: 86, support: 88, igl: 92 }
+      { name: "volt", roles: ["Rifler"], firepower: 82, consistency: 84 },
+      { name: "Snax", roles: ["IGL"], firepower: 70, consistency: 86, support: 88, igl: 89 },
+      { name: "siuhy", roles: ["IGL"], firepower: 78, consistency: 86, support: 88, igl: 92 },
+      { name: "neaLaN", roles: ["IGL"], firepower: 69, consistency: 86, support: 88, igl: 83 }
     ]
   },
 
