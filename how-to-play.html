@@ -6,6 +6,17 @@
     </head>
     <body>
 
+    <div id="how-to-tabs">
+        <button onclick="showHowToTab('instructions')">
+            How to Play
+        </button>
+
+        <button onclick="showHowToTab('teams')">
+            Team Pool
+        </button>
+    </div>
+
+    <div id="instructions-tab">
     <div id="how-to-play-page">
         <h1>How to Play</h1>
 
@@ -239,10 +250,26 @@
 
         <p>The challenge of 87-0 is discovering which combinations of Counter-Strike legends can truly create an era.</p>
     </div>
+    </div>
+
+    <div id="teams-tab" style="display:none;">
+    <div id="how-to-play-page">
+        <h1>Team Pool</h1>
+
+        <p>
+        These are all teams currently available in the draft pool.
+        </p>
+
+        <div id="team-pool-list"></div>
+    </div>
+    </div>
 
     <button class="back-button" onclick="window.location.href='index.html'">
         Back to Game
     </button>
+
+    <script src="players.js"></script>
+    <script src="how-to-play.js"></script>
 
     </body>
     </html>
