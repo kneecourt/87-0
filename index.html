@@ -38,15 +38,25 @@
     Draft 5 Counter-Strike players and see if they can create an era.
   </p>
 
+  <div id="slot-machine" style="display:none;">
+    <div id="slot-team-name">Spinning...</div>
+  </div>
+
   <h2 id="draft-title">Player Options</h2>
 
   <h3 id="role-needed"></h3>
 
   <div id="player-options"></div>
 
-  <h2>Your Team</h2>
+  <button id="reroll-button" onclick="rerollTeam()">
+    <span class="reroll-icon">⟳</span>
+    <span class="reroll-text">Reroll</span>
+  </button>
 
-  <ul id="team-list"></ul>
+  <div id="team-section" style="display:none;">
+    <h2>Your Team</h2>
+    <ul id="team-list"></ul>
+  </div>
 
   <button id="simulate-button" onclick="simulateEra()">
     Simulate Era
