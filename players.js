@@ -1061,6 +1061,8 @@ const teamYears = [
       { name: "abE", roles: ["Rifler"], firepower: 67, consistency: 82 },
       { name: "jasonR", roles: ["Rifler"], firepower: 82, consistency: 80 },
       { name: "AcilioN", roles: ["Rifler"], firepower: 86, consistency: 80 },
+      { name: "fREAKAZOID", roles: ["Rifler"], firepower: 80, consistency: 80 },
+      { name: "summit1g", roles: ["Rifler", "Support"], firepower: 67, consistency: 80, support: 78 },
       { name: "Machinegun", roles: ["Rifler"], firepower: 88, consistency: 79 },
       { name: "Davey", roles: ["AWPer", "IGL"], firepower: 75, consistency: 78, igl: 76 },
       { name: "Professor_Chaos", roles: ["IGL"], firepower: 65, consistency: 79, igl: 70 },
@@ -1087,7 +1089,7 @@ const teamYears = [
     players: [
       { name: "MSL", roles: ["IGL", "AWPer"], firepower: 72, consistency: 88, igl: 93 },
       { name: "valde", roles: ["Rifler"], firepower: 96, consistency: 91 },
-      { name: "Kjaerbye", roles: ["Rifler"], firepower: 90, consistency: 88 },
+      { name: "Kjaerbye", roles: ["Rifler"], firepower: 89, consistency: 88 },
       { name: "aizy", roles: ["Rifler", "Support"], firepower: 86, consistency: 86,  support: 76  },
       { name: "mertz", roles: ["Rifler"], firepower: 82, consistency: 91 },
       { name: "niko", roles: ["Rifler"], firepower: 84, consistency: 91 },
