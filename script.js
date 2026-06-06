@@ -348,10 +348,9 @@ function getValidTeams() {
 }
 
 function spinForTeam() {
-  const slotMachine = document.getElementById("slot-machine");
-  const slotTeamName = document.getElementById("slot-team-name");
   const optionsDiv = document.getElementById("player-options");
   const title = document.getElementById("draft-title");
+  const rerollButton = document.getElementById("reroll-button");
 
   const validTeams = getValidTeams();
 
@@ -367,6 +366,10 @@ function spinForTeam() {
   title.textContent = "Selecting Team...";
 
   updateRemainingRolesDisplay();
+
+  if (rerollButton) {
+    rerollButton.style.display = "none";
+  }
 
   let spins = 0;
   const maxSpins = 20;
@@ -386,11 +389,15 @@ function spinForTeam() {
       const finalIndex = Math.floor(Math.random() * validTeams.length);
       currentTeamYear = validTeams[finalIndex];
 
-        title.textContent =
-          currentTeamYear.team + " - " + currentTeamYear.year;
+      title.textContent =
+        currentTeamYear.team + " - " + currentTeamYear.year;
 
       setTimeout(function () {
         showPlayers(true);
+
+        if (!rerollUsed && rerollButton && team.length < 5) {
+          rerollButton.style.display = "inline-flex";
+        }
       }, 500);
     }
   }, 80);
@@ -700,7 +707,7 @@ function playAgain() {
 
   const rerollButton = document.getElementById("reroll-button");
   if (rerollButton) {
-    rerollButton.style.display = "block";
+    rerollButton.style.display = "none";
   }
 
   const simulateButton = document.getElementById("simulate-button");
