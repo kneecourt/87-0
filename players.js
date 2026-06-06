@@ -1234,5 +1234,22 @@ const teamYears = [
       { name: "STYKO", roles: ["Support", "Rifler"], firepower: 74, consistency: 87, support: 93 },
       { name: "oskar", roles: ["AWPer"], firepower: 92, consistency: 88 }
     ]
+  },
+
+  {
+    team: "Content Creators",
+    year: "Wildcard",
+    players: [
+      { name: "fl0m", roles: ["Wildcard"], firepower: 76, consistency: 85, support: 84, igl: 75 },
+      { name: "WarOwl", roles: ["Wildcard"], firepower: 72, consistency: 88, support: 90, igl: 80 },
+      { name: "ohnePixel", roles: ["Wildcard"], firepower: 25, consistency: 43, support: 14, igl: 0 },
+      { name: "Anomaly", roles: ["Wildcard"], firepower: 60, consistency: 80, support: 20, igl: 2 },
+      { name: "Sparkles", roles: ["Wildcard"], firepower: 67, consistency: 84, support: 82, igl: 43 },
+      { name: "Arrow", roles: ["Wildcard"], firepower: 56, consistency: 85, support: 38, igl: 44 },
+      { name: "iiTzTimmy", roles: ["Wildcard"], firepower: 85, consistency: 85, support: 50, igl: 0 },
+      { name: "dona", roles: ["Wildcard"], firepower: 54, consistency: 45, support: 53, igl: 23 },
+      { name: "psp1g", roles: ["Wildcard"], firepower: 62, consistency: 75, support: 45, igl: 42 },
+      { name: "dima_wallhacks", roles: ["Wildcard"], firepower: 65, consistency: 85, support: 45, igl: 39 },
+    ]
   }
 ];
