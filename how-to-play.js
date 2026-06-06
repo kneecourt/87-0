@@ -8,8 +8,7 @@ function showHowToTab(tabName) {
   if (tabName === "instructions") {
     instructionsTab.style.display = "block";
     teamsTab.style.display = "none";
-  }
-  else {
+  } else {
     instructionsTab.style.display = "none";
     teamsTab.style.display = "block";
 
@@ -23,7 +22,27 @@ function renderTeamPool() {
 
   teamPoolList.innerHTML = "";
 
-  for (let i = 0; i < teamYears.length; i++) {
+  const sortedTeams = [...teamYears];
+
+  sortedTeams.sort(function(a, b) {
+    const yearA = isNaN(Number(a.year))
+      ? 9999
+      : Number(a.year);
+
+    const yearB = isNaN(Number(b.year))
+      ? 9999
+      : Number(b.year);
+
+    const yearDifference = yearA - yearB;
+
+    if (yearDifference !== 0) {
+      return yearDifference;
+    }
+
+    return a.team.localeCompare(b.team);
+  });
+
+  for (let i = 0; i < sortedTeams.length; i++) {
     const teamBlock =
       document.createElement("div");
 
@@ -32,10 +51,18 @@ function renderTeamPool() {
     const title =
       document.createElement("h3");
 
-    title.textContent =
-      teamYears[i].team +
-      " - " +
-      teamYears[i].year;
+    if (
+      sortedTeams[i].year === undefined ||
+      sortedTeams[i].year === null ||
+      sortedTeams[i].year === ""
+    ) {
+      title.textContent = sortedTeams[i].team;
+    } else {
+      title.textContent =
+        sortedTeams[i].team +
+        " - " +
+        sortedTeams[i].year;
+    }
 
     teamBlock.appendChild(title);
 
