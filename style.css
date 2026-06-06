@@ -327,3 +327,13 @@ a:visited {
   }
 
 }
+
+.game-logo {
+  display: block;
+  width: 180px;
+  max-width: 80%;
+  height: auto;
+  margin: 10px auto 18px auto;
+
+  filter: drop-shadow(0 0 18px rgba(255, 159, 28, 0.25));
+}
