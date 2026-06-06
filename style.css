@@ -78,8 +78,8 @@ li {
 
 #how-to-play-page {
   max-width: 850px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 0 auto;
+  padding: 10px 20px 40px 20px;
   text-align: left;
   line-height: 1.6;
 }
@@ -92,4 +92,33 @@ li {
 #how-to-play-page ul {
   list-style: disc;
   padding-left: 30px;
+}
+
+#how-to-play-page p:last-of-type {
+  margin-bottom: 10px;
+}
+
+#how-to-play-page ul:last-of-type {
+  margin-bottom: 10px;
+}
+
+#how-to-play-page .back-button {
+  margin-top: 10px;
+}
+
+.back-button {
+  display: block;
+  width: 200px;
+  margin: 10px auto 40px auto;
+  text-align: center;
+}
+
+#launch-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  text-align: center;
 }
