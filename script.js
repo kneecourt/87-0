@@ -27,8 +27,22 @@ function showPlayers(useCurrentTeamYear = false) {
   optionsDiv.innerHTML = "";
 
   if (useCurrentTeamYear === false || currentTeamYear === null) {
-    const randomIndex = Math.floor(Math.random() * teamYears.length);
-    currentTeamYear = teamYears[randomIndex];
+    let validTeams = [];
+
+    for (let i = 0; i < teamYears.length; i++) {
+      if (canTeamProvideUsefulPlayer(teamYears[i])) {
+        validTeams.push(teamYears[i]);
+      }
+    }
+
+    if (validTeams.length === 0) {
+      alert("No valid teams remain. Starting a new draft.");
+      playAgain();
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * validTeams.length);
+    currentTeamYear = validTeams[randomIndex];
   }
 
   title.textContent = currentTeamYear.team + " - " + currentTeamYear.year;
@@ -74,10 +88,52 @@ function getRemainingRoles() {
   return remainingRoles;
 }
 
+function isPlayerAlreadyDrafted(player) {
+  for (let i = 0; i < team.length; i++) {
+    if (team[i].name === player.name) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function canPlayerFillRemainingRole(player) {
+  const remainingRoles = getRemainingRoles();
+
+  for (let i = 0; i < remainingRoles.length; i++) {
+    if (player.roles.includes(remainingRoles[i].role)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function canTeamProvideUsefulPlayer(teamYear) {
+  for (let i = 0; i < teamYear.players.length; i++) {
+    const player = teamYear.players[i];
+
+    if (
+      isPlayerAlreadyDrafted(player) === false &&
+      canPlayerFillRemainingRole(player) === true
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function showRoleChoices(player, teamYear) {
   const optionsDiv = document.getElementById("player-options");
   const title = document.getElementById("draft-title");
   const roleNeeded = document.getElementById("role-needed");
+
+  if (isPlayerAlreadyDrafted(player)) {
+    alert("You already drafted " + player.name + " from another year.");
+    return;
+  }
 
   const remainingRoles = getRemainingRoles();
   let availableRoles = [];
@@ -94,11 +150,7 @@ function showRoleChoices(player, teamYear) {
   }
 
   if (availableRoles.length === 1) {
-    draftPlayerWithRole(
-      player,
-      teamYear,
-      availableRoles[0]
-    );
+    draftPlayerWithRole(player, teamYear, availableRoles[0]);
     return;
   }
 
@@ -106,11 +158,7 @@ function showRoleChoices(player, teamYear) {
     availableRoles.length > 1 &&
     availableRoles.every(role => role.role === "Rifler")
   ) {
-    draftPlayerWithRole(
-      player,
-      teamYear,
-      availableRoles[0]
-    );
+    draftPlayerWithRole(player, teamYear, availableRoles[0]);
     return;
   }
 
@@ -119,21 +167,15 @@ function showRoleChoices(player, teamYear) {
 
   if (roleNeeded) {
     roleNeeded.textContent =
-      "Available Slots: " +
-      availableRoles.map(role => role.slot).join(", ");
+      "Available Slots: " + availableRoles.map(role => role.slot).join(", ");
   }
 
   for (let i = 0; i < availableRoles.length; i++) {
     const roleButton = document.createElement("button");
-
     roleButton.textContent = availableRoles[i].slot;
 
     roleButton.onclick = function () {
-      draftPlayerWithRole(
-        player,
-        teamYear,
-        availableRoles[i]
-      );
+      draftPlayerWithRole(player, teamYear, availableRoles[i]);
     };
 
     optionsDiv.appendChild(roleButton);
@@ -223,6 +265,16 @@ function updateTeam() {
   }
 
   updateSimulateButton();
+}
+
+function updateSimulateButton() {
+  const simulateButton = document.getElementById("simulate-button");
+
+  if (team.length < 5) {
+    simulateButton.style.display = "none";
+  } else {
+    simulateButton.style.display = "block";
+  }
 }
 
 function getCohesionScore() {
