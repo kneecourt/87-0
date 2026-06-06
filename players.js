@@ -547,8 +547,9 @@ const teamYears = [
     year: "2014",
     players: [
       { name: "FeTiSh", roles: ["IGL"], firepower: 66, consistency: 78, support: 85, igl: 83 },
-      { name: "device", roles: ["AWPer"], firepower: 88, consistency: 92 },
+      { name: "device", roles: ["AWPer", "Rifler"], firepower: 88, consistency: 92 },
       { name: "dupreeh", roles: ["Rifler"], firepower: 84, consistency: 86 },
+      { name: "aizy", roles: ["Rifler"], firepower: 79, consistency: 86 },
       { name: "cajunb", roles: ["Rifler", "AWPer"], firepower: 84, consistency: 84 },
       { name: "Xyp9x", roles: ["Support"], firepower: 80, consistency: 90, support: 98 }
     ]
