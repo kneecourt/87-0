@@ -1,5 +1,6 @@
 let team = [];
 let currentTeamYear = null;
+let rerollUsed = false;
 
 const requiredRoles = [
   { slot: "IGL", role: "IGL" },
@@ -50,6 +51,7 @@ function showPlayers(useCurrentTeamYear = false) {
   if (roleNeeded) {
     const remainingRoles = getRemainingRoles();
     let displayRoles = [];
+    updateRemainingRolesDisplay();
 
     for (let i = 0; i < remainingRoles.length; i++) {
       if (
@@ -80,6 +82,74 @@ function showPlayers(useCurrentTeamYear = false) {
   }
 
   updateSimulateButton();
+  
+  if (simulateButton) {
+    if (team.length === 5) {
+      simulateButton.style.display = "block";
+    } else {
+      simulateButton.style.display = "none";
+    }
+  }
+
+}
+
+function updateTeamSection() {
+  const teamSection = document.getElementById("team-section");
+
+  if (teamSection) {
+    if (team.length > 0) {
+      teamSection.style.display = "block";
+    } else {
+      teamSection.style.display = "none";
+    }
+  }
+}
+
+function rerollTeam() {
+  if (rerollUsed) {
+    alert("You already used your reroll.");
+    return;
+  }
+
+  if (team.length >= 5) {
+    alert("You cannot reroll after your team is complete.");
+    return;
+  }
+
+  rerollUsed = true;
+  currentTeamYear = null;
+
+  spinForTeam();
+
+  const rerollButton = document.getElementById("reroll-button");
+  if (rerollButton) {
+    rerollButton.style.display = "none";
+  }
+}
+
+function updateRemainingRolesDisplay() {
+  const roleNeeded = document.getElementById("role-needed");
+
+  if (!roleNeeded) {
+    return;
+  }
+
+  const remainingRoles = getRemainingRoles();
+  let displayRoles = [];
+
+  for (let i = 0; i < remainingRoles.length; i++) {
+    if (
+      remainingRoles[i].slot === "Rifler 1" ||
+      remainingRoles[i].slot === "Rifler 2"
+    ) {
+      displayRoles.push("Rifler");
+    } else {
+      displayRoles.push(remainingRoles[i].slot);
+    }
+  }
+
+  roleNeeded.textContent =
+    "Remaining Roles: " + displayRoles.join(", ");
 }
 
 function getRemainingRoles() {
@@ -102,6 +172,13 @@ function getRemainingRoles() {
   return remainingRoles;
 }
 
+function playerCanFillRole(player, role) {
+  return (
+    player.roles.includes(role) ||
+    player.roles.includes("Wildcard")
+  );
+}
+
 function isPlayerAlreadyDrafted(player) {
   for (let i = 0; i < team.length; i++) {
     if (team[i].name === player.name) {
@@ -116,7 +193,7 @@ function canPlayerFillRemainingRole(player) {
   const remainingRoles = getRemainingRoles();
 
   for (let i = 0; i < remainingRoles.length; i++) {
-    if (player.roles.includes(remainingRoles[i].role)) {
+    if (playerCanFillRole(player, remainingRoles[i].role)) {
       return true;
     }
   }
@@ -153,7 +230,7 @@ function showRoleChoices(player, teamYear) {
   let availableRoles = [];
 
   for (let i = 0; i < remainingRoles.length; i++) {
-    if (player.roles.includes(remainingRoles[i].role)) {
+    if (playerCanFillRole(player, remainingRoles[i].role)) {
       availableRoles.push(remainingRoles[i]);
     }
   }
@@ -225,7 +302,7 @@ function draftPlayerWithRole(player, teamYear, chosenSlot) {
   for (let i = 0; i < remainingRoles.length; i++) {
     if (
       remainingRoles[i].slot === chosenSlot.slot &&
-      player.roles.includes(chosenSlot.role)
+      playerCanFillRole(player, chosenSlot.role)
     ) {
       validRole = true;
     }
@@ -249,17 +326,81 @@ function draftPlayerWithRole(player, teamYear, chosenSlot) {
   updateTeam();
 
   if (team.length < 5) {
-    showPlayers();
+    spinForTeam();
   } else {
     document.getElementById("player-options").innerHTML = "";
     document.getElementById("draft-title").textContent = "Team complete";
 
     const roleNeeded = document.getElementById("role-needed");
+    const rerollButton = document.getElementById("reroll-button");
+    if (rerollButton) {
+      rerollButton.style.display = "none";
+    }
 
     if (roleNeeded) {
       roleNeeded.textContent = "All roles filled";
     }
   }
+}
+
+function getValidTeams() {
+  let validTeams = [];
+
+  for (let i = 0; i < teamYears.length; i++) {
+    if (canTeamProvideUsefulPlayer(teamYears[i])) {
+      validTeams.push(teamYears[i]);
+    }
+  }
+
+  return validTeams;
+}
+
+function spinForTeam() {
+  const slotMachine = document.getElementById("slot-machine");
+  const slotTeamName = document.getElementById("slot-team-name");
+  const optionsDiv = document.getElementById("player-options");
+  const title = document.getElementById("draft-title");
+
+  const validTeams = getValidTeams();
+
+  if (validTeams.length === 0) {
+    alert("No valid teams remain. Starting a new draft.");
+    playAgain();
+    return;
+  }
+
+  optionsDiv.innerHTML = "";
+  title.textContent = "Selecting Team...";
+  updateRemainingRolesDisplay();
+  slotMachine.style.display = "block";
+
+  let spins = 0;
+  const maxSpins = 20;
+
+  const spinInterval = setInterval(function () {
+    const randomIndex = Math.floor(Math.random() * validTeams.length);
+    const randomTeam = validTeams[randomIndex];
+
+    slotTeamName.textContent =
+      randomTeam.team + " - " + randomTeam.year;
+
+    spins++;
+
+    if (spins >= maxSpins) {
+      clearInterval(spinInterval);
+
+      const finalIndex = Math.floor(Math.random() * validTeams.length);
+      currentTeamYear = validTeams[finalIndex];
+
+      slotTeamName.textContent =
+        currentTeamYear.team + " - " + currentTeamYear.year;
+
+      setTimeout(function () {
+        slotMachine.style.display = "none";
+        showPlayers(true);
+      }, 500);
+    }
+  }, 80);
 }
 
 function updateTeam() {
@@ -288,6 +429,7 @@ function updateTeam() {
       }
 
   updateSimulateButton();
+  updateTeamSection();
 }
 
 function updateSimulateButton() {
@@ -304,7 +446,7 @@ function startGame() {
   document.getElementById("launch-screen").style.display = "none";
   document.getElementById("game-screen").style.display = "block";
 
-  showPlayers();
+  spinForTeam();
   updateSimulateButton();
 }
 
@@ -522,11 +664,17 @@ function simulateEra() {
     "<p>Second Best Firepower: " + secondBestFirepower + "</p>";
 
   document.getElementById("play-again-button").style.display = "block";
+  const simulateButton = document.getElementById("simulate-button");
+
+  if (simulateButton) {
+    simulateButton.style.display = "none";
+  }
 }
 
 function playAgain() {
   team = [];
   currentTeamYear = null;
+  rerollUsed = false;
 
   document.getElementById("team-list").innerHTML = "";
   document.getElementById("result").textContent = "";
@@ -534,7 +682,19 @@ function playAgain() {
   document.getElementById("score-breakdown").innerHTML = "";
 
   showPlayers();
+  const rerollButton = document.getElementById("reroll-button");
+  if (rerollButton) {
+    rerollButton.style.display = "block";
+  }
+
   updateSimulateButton();
+  const simulateButton = document.getElementById("simulate-button");
+
+  if (simulateButton) {
+    simulateButton.style.display = "block";
+  }
+
+  updateTeamSection();
 }
 
 function toggleHowToPlay() {
