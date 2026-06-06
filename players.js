@@ -16,9 +16,9 @@ const teamYears = [
     year: "2014",
     players: [
       { name: "TaZ", roles: ["IGL", "Support"], firepower: 76, consistency: 88, support: 92, igl: 93 },
-      { name: "pashaBiceps", roles: ["AWPer", "Rifler"], firepower: 92, consistency: 88 },
+      { name: "pashaBiceps", roles: ["AWPer", "Rifler"], firepower: 89, consistency: 88 },
       { name: "NEO", roles: ["Rifler"], firepower: 90, consistency: 90 },
-      { name: "Snax", roles: ["Rifler"], firepower: 95, consistency: 91 },
+      { name: "Snax", roles: ["Rifler"], firepower: 92, consistency: 91 },
       { name: "byali", roles: ["Rifler"], firepower: 87, consistency: 84 }
     ]
   },
