@@ -1226,11 +1226,11 @@ const teamYears = [
     year: "2019",
     players: [
       { name: "karrigan", roles: ["IGL"], firepower: 68, consistency: 89, igl: 98 },
-      { name: "woxic", roles: ["AWPer"], firepower: 96, consistency: 87 },
-      { name: "ropz", roles: ["Rifler"], firepower: 94, consistency: 94 },
+      { name: "woxic", roles: ["AWPer"], firepower: 94, consistency: 87 },
+      { name: "ropz", roles: ["Rifler"], firepower: 91, consistency: 94 },
       { name: "frozen", roles: ["Rifler"], firepower: 88, consistency: 86 },
       { name: "chrisJ", roles: ["AWPer", "Support", "Rifler"], firepower: 82, consistency: 87, support: 88 },
-      { name: "suNny", roles: ["Rifler"], firepower: 93, consistency: 85 },
+      { name: "suNny", roles: ["Rifler"], firepower: 87, consistency: 85 },
       { name: "STYKO", roles: ["Support", "Rifler"], firepower: 74, consistency: 87, support: 93 },
       { name: "oskar", roles: ["AWPer"], firepower: 92, consistency: 88 }
     ]
@@ -1240,16 +1240,23 @@ const teamYears = [
     team: "Content Creators",
     year: "Wildcard",
     players: [
-      { name: "fl0m", roles: ["Wildcard"], firepower: 76, consistency: 85, support: 84, igl: 75 },
-      { name: "WarOwl", roles: ["Wildcard"], firepower: 72, consistency: 88, support: 90, igl: 80 },
+      { name: "fl0m", roles: ["Wildcard"], firepower: 73, consistency: 85, support: 84, igl: 75 },
+      { name: "WarOwl", roles: ["Wildcard"], firepower: 65, consistency: 88, support: 90, igl: 80 },
       { name: "ohnePixel", roles: ["Wildcard"], firepower: 25, consistency: 43, support: 14, igl: 0 },
-      { name: "Anomaly", roles: ["Wildcard"], firepower: 60, consistency: 80, support: 20, igl: 2 },
-      { name: "Sparkles", roles: ["Wildcard"], firepower: 67, consistency: 84, support: 82, igl: 43 },
-      { name: "Arrow", roles: ["Wildcard"], firepower: 56, consistency: 85, support: 38, igl: 44 },
-      { name: "iiTzTimmy", roles: ["Wildcard"], firepower: 85, consistency: 85, support: 50, igl: 0 },
-      { name: "dona", roles: ["Wildcard"], firepower: 54, consistency: 45, support: 53, igl: 23 },
-      { name: "psp1g", roles: ["Wildcard"], firepower: 62, consistency: 75, support: 45, igl: 42 },
+      { name: "Anomaly", roles: ["Wildcard"], firepower: 54, consistency: 80, support: 20, igl: 2 },
+      { name: "Sparkles", roles: ["Wildcard"], firepower: 55, consistency: 84, support: 82, igl: 43 },
+      { name: "Arrow", roles: ["Wildcard"], firepower: 43, consistency: 85, support: 38, igl: 44 },
+      { name: "iiTzTimmy", roles: ["Wildcard"], firepower: 66, consistency: 85, support: 50, igl: 0 },
+      { name: "dona", roles: ["Wildcard"], firepower: 34, consistency: 45, support: 53, igl: 23 },
+      { name: "psp1g", roles: ["Wildcard"], firepower: 44, consistency: 75, support: 45, igl: 42 },
       { name: "dima_wallhacks", roles: ["Wildcard"], firepower: 65, consistency: 85, support: 45, igl: 39 },
+      { name: "d0cc", roles: ["Wildcard"], firepower: 71, consistency: 68, support: 60, igl: 24 },
+      { name: "dona", roles: ["Wildcard"], firepower: 54, consistency: 45, support: 23, igl: 23 },
+      { name: "FURIOUS", roles: ["Wildcard"], firepower: 60, consistency: 67, support: 56, igl: 34 },
+      { name: "nocries", roles: ["Wildcard"], firepower: 89, consistency: 87, support: 73, igl: 20 },
+      { name: "olofmeister", roles: ["Wildcard"], firepower: 80, consistency: 82, support: 57, igl: 34 },
+      { name: "DemeNishiki", roles: ["Wildcard"], firepower: 44, consistency: 31, support: 40, igl: 10 },
+      { name: "HOUNGOUNGAGNE", roles: ["Wildcard"], firepower: 52, consistency: 43, support: 23, igl: 23 },
     ]
   }
 ];
