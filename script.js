@@ -48,8 +48,22 @@ function showPlayers(useCurrentTeamYear = false) {
   title.textContent = currentTeamYear.team + " - " + currentTeamYear.year;
 
   if (roleNeeded) {
+    const remainingRoles = getRemainingRoles();
+    let displayRoles = [];
+
+    for (let i = 0; i < remainingRoles.length; i++) {
+      if (
+        remainingRoles[i].slot === "Rifler 1" ||
+        remainingRoles[i].slot === "Rifler 2"
+      ) {
+        displayRoles.push("Rifler");
+      } else {
+        displayRoles.push(remainingRoles[i].slot);
+      }
+    }
+
     roleNeeded.textContent =
-      "Remaining Roles: " + getRemainingRoles().map(role => role.slot).join(", ");
+      "Remaining Roles: " + displayRoles.join(", ");
   }
 
   for (let i = 0; i < currentTeamYear.players.length; i++) {
@@ -255,14 +269,23 @@ function updateTeam() {
   for (let i = 0; i < team.length; i++) {
     const item = document.createElement("li");
 
+    let displaySlot = team[i].draftedSlot;
+
+    if (
+      displaySlot === "Rifler 1" ||
+      displaySlot === "Rifler 2"
+    ) {
+      displaySlot = "Rifler";
+    }
+
     item.textContent =
-      team[i].draftedSlot + ": " +
+      displaySlot + ": " +
       team[i].name + " - " +
       team[i].team + " " +
       team[i].year;
 
-    teamList.appendChild(item);
-  }
+        teamList.appendChild(item);
+      }
 
   updateSimulateButton();
 }
@@ -275,6 +298,14 @@ function updateSimulateButton() {
   } else {
     simulateButton.style.display = "block";
   }
+}
+
+function startGame() {
+  document.getElementById("launch-screen").style.display = "none";
+  document.getElementById("game-screen").style.display = "block";
+
+  showPlayers();
+  updateSimulateButton();
 }
 
 function getCohesionScore() {
@@ -480,6 +511,16 @@ function simulateEra() {
   document.getElementById("result").textContent =
     "Era Score: " + eraScore + " - " + resultText;
 
+  document.getElementById("score-breakdown").innerHTML =
+    "<h3>Score Breakdown</h3>" +
+    "<p>Firepower Score: " + firepowerScore.toFixed(1) + "</p>" +
+    "<p>IGL Score: " + iglScore.toFixed(1) + "</p>" +
+    "<p>Support Score: " + supportScore.toFixed(1) + "</p>" +
+    "<p>Consistency Score: " + consistencyScore.toFixed(1) + "</p>" +
+    "<p>Cohesion Modifier: " + cohesionScore + "</p>" +
+    "<p>Best Firepower: " + bestFirepower + "</p>" +
+    "<p>Second Best Firepower: " + secondBestFirepower + "</p>";
+
   document.getElementById("play-again-button").style.display = "block";
 }
 
@@ -490,6 +531,7 @@ function playAgain() {
   document.getElementById("team-list").innerHTML = "";
   document.getElementById("result").textContent = "";
   document.getElementById("play-again-button").style.display = "none";
+  document.getElementById("score-breakdown").innerHTML = "";
 
   showPlayers();
   updateSimulateButton();
@@ -505,4 +547,4 @@ function toggleHowToPlay() {
   }
 }
 
-showPlayers();
+updateSimulateButton();
