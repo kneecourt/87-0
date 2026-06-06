@@ -261,17 +261,74 @@ function simulateEra() {
   }
 
   let bestFirepower = Math.max(
+    iglPlayer.firepower,
     awperPlayer.firepower,
+    supportPlayer.firepower,
     riflers[0].firepower,
     riflers[1].firepower
   );
 
-  if (bestFirepower < 90) {
+  if (bestFirepower < 80) {
+    eraScore -= 15;
+  }
+  else if (bestFirepower < 85) {
+    eraScore -= 10;
+  }
+  else if (bestFirepower < 90) {
     eraScore -= 5;
   }
 
-  if (awperPlayer.firepower < 85) {
-    eraScore -= 4;
+  if (iglPlayer.igl < 85) {
+    eraScore -= 5;
+  }
+
+  let firepowerValues = [
+    iglPlayer.firepower,
+    awperPlayer.firepower,
+    supportPlayer.firepower,
+    riflers[0].firepower,
+    riflers[1].firepower
+  ];
+
+  firepowerValues.sort(function(a, b) {
+    return b - a;
+  });
+
+  bestFirepower = firepowerValues[0];
+  let secondBestFirepower = firepowerValues[1];
+
+  if (secondBestFirepower < 85) {
+    eraScore -= 10;
+  }
+  else if (secondBestFirepower < 90) {
+    eraScore -= 5;
+  }
+
+  let topFirepowerCount = 0;
+
+  for (let i = 0; i < firepowerValues.length; i++) {
+    if (firepowerValues[i] >= 95) {
+      topFirepowerCount++;
+    }
+  }
+
+  if (
+    bestFirepower >= 100 &&
+    secondBestFirepower >= 96 &&
+    topFirepowerCount >= 3 &&
+    iglScore >= 95 &&
+    supportScore >= 90
+  ) {
+    eraScore += 4;
+  }
+  else if (
+    bestFirepower >= 100 &&
+    secondBestFirepower >= 94 &&
+    topFirepowerCount >= 2 &&
+    iglScore >= 90 &&
+    supportScore >= 85
+  ) {
+    eraScore += 2;
   }
 
   eraScore = Math.round(eraScore);
@@ -286,15 +343,15 @@ function simulateEra() {
 
   let resultText = "";
 
-  if (eraScore >= 96) {
+  if (eraScore >= 95) {
     resultText = "Generational era";
-  } else if (eraScore >= 93) {
+  } else if (eraScore >= 90) {
     resultText = "Back to back Majors";
-  } else if (eraScore >= 86) {
+  } else if (eraScore >= 80) {
     resultText = "Major champions";
-  } else if (eraScore >= 76) {
+  } else if (eraScore >= 70) {
     resultText = "Fluke run";
-  } else if (eraScore >= 65) {
+  } else if (eraScore >= 60) {
     resultText = "Playoff merchants";
   } else {
     resultText = "Disband immediately";
