@@ -165,7 +165,7 @@ const teamYears = [
       { name: "gla1ve", roles: ["IGL"], firepower: 82, consistency: 93, support: 92, igl: 100 },
       { name: "device", roles: ["AWPer"], firepower: 99, consistency: 99 },
       { name: "dupreeh", roles: ["Rifler"], firepower: 94, consistency: 92 },
-      { name: "Magisk", roles: ["Rifler", "Support"], firepower: 95, consistency: 92, support: 89 },
+      { name: "Magisk", roles: ["Rifler"], firepower: 95, consistency: 92 },
       { name: "Xyp9x", roles: ["Support"], firepower: 83, consistency: 96, support: 100 }
     ]
   },
