@@ -46,6 +46,7 @@ function showPlayers(useCurrentTeamYear = false) {
     currentTeamYear = validTeams[randomIndex];
   }
 
+  title.style.display = "flex";
   title.textContent = currentTeamYear.team + " - " + currentTeamYear.year;
 
   if (roleNeeded) {
@@ -361,9 +362,11 @@ function spinForTeam() {
   }
 
   optionsDiv.innerHTML = "";
+
+  title.style.display = "flex";
   title.textContent = "Selecting Team...";
+
   updateRemainingRolesDisplay();
-  slotMachine.style.display = "block";
 
   let spins = 0;
   const maxSpins = 20;
@@ -372,7 +375,7 @@ function spinForTeam() {
     const randomIndex = Math.floor(Math.random() * validTeams.length);
     const randomTeam = validTeams[randomIndex];
 
-    slotTeamName.textContent =
+    title.textContent =
       randomTeam.team + " - " + randomTeam.year;
 
     spins++;
@@ -383,11 +386,10 @@ function spinForTeam() {
       const finalIndex = Math.floor(Math.random() * validTeams.length);
       currentTeamYear = validTeams[finalIndex];
 
-      slotTeamName.textContent =
-        currentTeamYear.team + " - " + currentTeamYear.year;
+        title.textContent =
+          currentTeamYear.team + " - " + currentTeamYear.year;
 
       setTimeout(function () {
-        slotMachine.style.display = "none";
         showPlayers(true);
       }, 500);
     }
@@ -680,55 +682,6 @@ function getValidTeams() {
   }
 
   return validTeams;
-}
-
-function spinForTeam() {
-  const slotMachine = document.getElementById("slot-machine");
-  const slotTeamName = document.getElementById("slot-team-name");
-  const optionsDiv = document.getElementById("player-options");
-  const title = document.getElementById("draft-title");
-
-  const validTeams = getValidTeams();
-
-  if (validTeams.length === 0) {
-    alert("No valid teams remain. Starting a new draft.");
-    playAgain();
-    return;
-  }
-
-  optionsDiv.innerHTML = "";
-  title.textContent = "Selecting Team...";
-  updateRemainingRolesDisplay();
-
-  slotMachine.style.display = "block";
-
-  let spins = 0;
-  const maxSpins = 20;
-
-  const spinInterval = setInterval(function () {
-    const randomIndex = Math.floor(Math.random() * validTeams.length);
-    const randomTeam = validTeams[randomIndex];
-
-    slotTeamName.textContent =
-      randomTeam.team + " - " + randomTeam.year;
-
-    spins++;
-
-    if (spins >= maxSpins) {
-      clearInterval(spinInterval);
-
-      const finalIndex = Math.floor(Math.random() * validTeams.length);
-      currentTeamYear = validTeams[finalIndex];
-
-      slotTeamName.textContent =
-        currentTeamYear.team + " - " + currentTeamYear.year;
-
-      setTimeout(function () {
-        slotMachine.style.display = "none";
-        showPlayers(true);
-      }, 500);
-    }
-  }, 80);
 }
 
 function playAgain() {
