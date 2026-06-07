@@ -37,11 +37,22 @@ body::after {
   pointer-events: none;
 }
 
-#game-screen,
 #launch-screen {
   width: min(760px, 92vw);
   margin: 0 auto;
   padding: 36px 20px;
+}
+
+#game-screen {
+  width: min(760px, 92vw);
+  margin: 0 auto;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 36px 20px 40px;
 }
 
 #launch-screen {
@@ -170,13 +181,36 @@ li {
 
 #simulate-button {
   margin-top: 24px;
-  background: linear-gradient(135deg, #ff9f1c, #ffbf69);
+
+  background: linear-gradient(
+    135deg,
+    #f5a623,
+    #f0b85b
+  );
+
   color: #111;
-  border: none;
+
+  border: 1px solid #ffb347;
+  border-radius: 10px;
+
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+
+  box-shadow: 0 0 18px rgba(255, 159, 28, 0.25);
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    filter 0.15s ease;
 }
 
 #simulate-button:hover {
-  background: linear-gradient(135deg, #ffb347, #ffd166);
+  transform: translateY(-1px);
+
+  border-color: #ffd166;
+
+  filter: brightness(1.05);
 }
 
 #result {
@@ -202,7 +236,34 @@ li {
 }
 
 #play-again-button {
-  margin-top: 24px;
+  width: min(520px, 100%);
+  max-width: none;
+
+  margin: 24px auto 0;
+  padding: 18px;
+
+  background: rgba(18, 24, 38, 0.95);
+  border: 1px solid #2d374f;
+  border-radius: 10px;
+
+  color: #f5f7fb;
+
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+
+  text-align: center;
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+#play-again-button:hover {
+  background: rgba(255, 159, 28, 0.12);
+  border-color: #ff9f1c;
+  transform: translateY(-1px);
 }
 
 #sidebar {
@@ -338,6 +399,10 @@ a:visited {
 
 }
 
+#game-content {
+  flex: 1;
+}
+
 .game-logo {
   display: block;
   width: 180px;
@@ -369,15 +434,14 @@ a:visited {
   position: relative;
 }
 
+
+
 #launch-footer {
-  position: absolute;
-  bottom: 78px;
-
-  left: 0;
-  right: 0;
-
+  position: static;
+  margin-top: 60px;
   text-align: center;
 }
+
 
 #launch-footer p {
   margin: 6px 0;
@@ -400,12 +464,9 @@ a:visited {
 }
 
 #bottom-footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 24px;
-
+  position: static;
   width: 100%;
+  margin-top: 32px;
 }
 
 .footer-divider {
