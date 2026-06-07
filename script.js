@@ -132,6 +132,12 @@ function updateRemainingRolesDisplay() {
   }
 
   const remainingRoles = getRemainingRoles();
+
+  if (remainingRoles.length === 0) {
+    roleNeeded.textContent = "All roles filled";
+    return;
+  }
+
   let displayRoles = [];
 
   for (let i = 0; i < remainingRoles.length; i++) {
