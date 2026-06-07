@@ -502,3 +502,28 @@ h2,
   border-color: #ff9f1c;
   transform: translateY(-1px);
 }
+
+/* How To Play page buttons */
+
+#how-to-tabs button,
+.back-button {
+  background: rgba(18, 24, 38, 0.95);
+  border: 1px solid #2d374f;
+  color: #f5f7fb;
+
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+#how-to-tabs button:hover,
+.back-button:hover {
+  background: rgba(255, 159, 28, 0.12);
+  border-color: #ff9f1c;
+  transform: translateY(-1px);
+}
