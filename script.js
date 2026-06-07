@@ -42,8 +42,7 @@ function showPlayers(useCurrentTeamYear = false) {
       return;
     }
 
-    const randomIndex = Math.floor(Math.random() * validTeams.length);
-    currentTeamYear = validTeams[randomIndex];
+    
   }
 
   title.style.display = "flex";
@@ -71,6 +70,9 @@ function showPlayers(useCurrentTeamYear = false) {
 
   for (let i = 0; i < currentTeamYear.players.length; i++) {
     const player = currentTeamYear.players[i];
+    if (!player || !player.name || !player.roles) {
+      continue;
+    }
 
     const button = document.createElement("button");
       button.textContent = player.name + " | " + player.roles.join(" / ");
@@ -176,6 +178,10 @@ function getRemainingRoles() {
 }
 
 function playerCanFillRole(player, role) {
+  if (!player || !player.roles) {
+    return false;
+  }
+
   return (
     player.roles.includes(role) ||
     player.roles.includes("Wildcard")
@@ -183,8 +189,35 @@ function playerCanFillRole(player, role) {
 }
 
 function isPlayerAlreadyDrafted(player) {
+  if (!player || !player.name) {
+    return false;
+  }
+
   for (let i = 0; i < team.length; i++) {
     if (team[i].name === player.name) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function canTeamProvideUsefulPlayer(teamYear) {
+  if (!teamYear || !teamYear.players) {
+    return false;
+  }
+
+  for (let i = 0; i < teamYear.players.length; i++) {
+    const player = teamYear.players[i];
+
+    if (!player || !player.name || !player.roles) {
+      continue;
+    }
+
+    if (
+      isPlayerAlreadyDrafted(player) === false &&
+      canPlayerFillRemainingRole(player) === true
+    ) {
       return true;
     }
   }
@@ -197,21 +230,6 @@ function canPlayerFillRemainingRole(player) {
 
   for (let i = 0; i < remainingRoles.length; i++) {
     if (playerCanFillRole(player, remainingRoles[i].role)) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
-function canTeamProvideUsefulPlayer(teamYear) {
-  for (let i = 0; i < teamYear.players.length; i++) {
-    const player = teamYear.players[i];
-
-    if (
-      isPlayerAlreadyDrafted(player) === false &&
-      canPlayerFillRemainingRole(player) === true
-    ) {
       return true;
     }
   }
@@ -361,23 +379,28 @@ function draftPlayerWithRole(player, teamYear, chosenSlot) {
   team.push(draftedPlayer);
 
   updateTeam();
+  updateTeamSection();
+  updateRemainingRolesDisplay();
+  updateSimulateButton();
 
   if (team.length < 5) {
+    currentTeamYear = null;
     spinForTeam();
-  } else {
-    document.getElementById("player-options").innerHTML = "";
-    document.getElementById("draft-title").textContent = "Team complete";
-
-    const roleNeeded = document.getElementById("role-needed");
-    const rerollButton = document.getElementById("reroll-button");
-    if (rerollButton) {
-      rerollButton.style.display = "none";
-    }
-
-    if (roleNeeded) {
-      roleNeeded.textContent = "All roles filled";
-    }
+    return;
   }
+
+  const title = document.getElementById("draft-title");
+  const optionsDiv = document.getElementById("player-options");
+  const rerollButton = document.getElementById("reroll-button");
+
+  title.textContent = "Team complete";
+  optionsDiv.innerHTML = "";
+
+  if (rerollButton) {
+    rerollButton.style.display = "none";
+  }
+
+  updateRemainingRolesDisplay();
 }
 
 function getValidTeams() {
@@ -392,12 +415,23 @@ function getValidTeams() {
   return validTeams;
 }
 
-function spinForTeam() {
+function spinForTeam(excludedTeamKey = null) {
   const optionsDiv = document.getElementById("player-options");
   const title = document.getElementById("draft-title");
   const rerollButton = document.getElementById("reroll-button");
 
-  const validTeams = getValidTeams();
+  let validTeams = getValidTeams();
+
+  if (excludedTeamKey !== null) {
+    const filteredTeams = validTeams.filter(function (teamYear) {
+      const teamKey = teamYear.team + " " + teamYear.year;
+      return teamKey !== excludedTeamKey;
+    });
+
+    if (filteredTeams.length > 0) {
+      validTeams = filteredTeams;
+    }
+  }
 
   if (validTeams.length === 0) {
     alert("No valid teams remain. Starting a new draft.");
@@ -490,6 +524,9 @@ function updateSimulateButton() {
 function startGame() {
   document.getElementById("launch-screen").style.display = "none";
   document.getElementById("game-screen").style.display = "block";
+
+  document.getElementById("launch-footer").style.display = "none";
+  document.getElementById("bottom-footer").style.display = "none";
 
   spinForTeam();
   updateSimulateButton();
@@ -716,7 +753,7 @@ function simulateEra() {
 
 function startGame() {
   document.getElementById("launch-screen").style.display = "none";
-  document.getElementById("game-screen").style.display = "block";
+  document.getElementById("game-screen").style.display = "flex";
 
   spinForTeam();
   updateSimulateButton();
