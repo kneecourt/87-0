@@ -5,7 +5,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   color: #f5f7fb;
   text-align: center;
 
@@ -346,4 +346,159 @@ a:visited {
   margin: 10px auto 18px auto;
 
   filter: drop-shadow(0 0 18px rgba(255, 159, 28, 0.25));
+}
+
+.disabled-role-button {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: #333;
+  color: #777;
+}
+
+.disabled-role-button:hover {
+  background: #121826;
+  border-color: #333;
+  transform: none;
+}
+
+#launch-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+#launch-footer {
+  position: absolute;
+  bottom: 78px;
+
+  left: 0;
+  right: 0;
+
+  text-align: center;
+}
+
+#launch-footer p {
+  margin: 6px 0;
+}
+
+#launch-footer a {
+  color: #ffb347;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#launch-footer a:hover {
+  color: #ffd966;
+  text-decoration: underline;
+}
+
+.footer-disclaimer {
+  color: #6f7a8f;
+  font-size: 12px;
+}
+
+#bottom-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+
+  width: 100%;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+
+  margin-bottom: 18px;
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: min(1050px, 70%);
+  margin: 0 auto;
+
+  font-size: 12px;
+  color: #8b95a7;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-links a {
+  color: #c7d0e0;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #ffb347;
+}
+
+.twitter-icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+.twitter-icon:hover {
+  opacity: 1;
+}
+
+h1,
+h2,
+#draft-title,
+#slot-team-name,
+#result {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+}
+
+#player-options button,
+#sidebar button {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+}
+
+#player-options button {
+  text-align: center;
+  background: rgba(18, 24, 38, 0.95);
+
+  font-size: 19px;
+  font-weight: 600;
+}
+
+#launch-screen button {
+  width: min(520px, 100%);
+  max-width: none;
+
+  padding: 18px;
+
+  background: rgba(18, 24, 38, 0.95);
+  border: 1px solid #2d374f;
+  border-radius: 10px;
+
+  color: #f5f7fb;
+
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+#launch-screen button:hover {
+  background: rgba(255, 159, 28, 0.12);
+  border-color: #ff9f1c;
+  transform: translateY(-1px);
 }
