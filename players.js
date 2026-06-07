@@ -1100,6 +1100,18 @@ const teamYears = [
   },
 
   {
+    team: "FURIA",
+    year: "2025",
+    players: [
+      { name: "FalleN", roles: ["IGL", "Support"], firepower: 75, consistency: 87, support: 88, igl: 90 },
+      { name: "molodoy", roles: ["AWPer"], firepower: 92, consistency: 88 },
+      { name: "KSCERATO", roles: ["Rifler"], firepower: 94, consistency: 95 },
+      { name: "yuurih", roles: ["Rifler"], firepower: 90, consistency: 92 },
+      { name: "YEKINDAR", roles: ["Rifler"], firepower: 89, consistency: 88 }
+    ]
+  },
+
+  {
     team: "Counter Logic Gaming",
     year: "2016",
     players: [
