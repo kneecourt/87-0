@@ -1,530 +1,142 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: 'Inter', sans-serif;
-  color: #f5f7fb;
-  text-align: center;
-
-  background:
-    linear-gradient(
-      180deg,
-      #07101f 0%,
-      #050b16 40%,
-      #040811 100%
-    );
-
-  position: relative;
-}
-
-body::after {
-  content: "";
-
-  position: fixed;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(30, 60, 120, 0.05) 50%,
-      transparent 100%
-    );
-
-  pointer-events: none;
-}
-
-#game-screen,
-#launch-screen {
-  width: min(760px, 92vw);
-  margin: 0 auto;
-  padding: 36px 20px;
-}
-
-#launch-screen {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-h1 {
-  font-size: 64px;
-  line-height: 1;
-  margin: 0 0 16px;
-  letter-spacing: -2px;
-  text-shadow: 0 0 16px rgba(255, 255, 255, 0.15);
-}
-
-p {
-  color: #b9c0d0;
-  font-size: 16px;
-}
-
-h2 {
-  font-size: 28px;
-  margin: 28px 0 12px;
-}
-
-h3 {
-  margin: 14px 0;
-  color: #f5f7fb;
-}
-
-#draft-title {
-  width: min(520px, 100%);
-  height: 82px;
-
-  margin: 20px auto;
-  padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid #ff9f1c;
-  border-radius: 14px;
-
-  background: rgba(18, 24, 38, 0.9);
-  box-shadow: 0 0 28px rgba(255, 159, 28, 0.12);
-
-  color: #f5f7fb;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-}
-
-#slot-machine {
-  display: none !important;
-}
-
-#role-needed {
-  color: #ffb347;
-  font-size: 18px;
-}
-
-button {
-  display: block;
-  width: 100%;
-  max-width: 440px;
-  margin: 10px auto;
-  padding: 14px 18px;
-
-  background: #121826;
-  color: #f5f7fb;
-
-  border: 1px solid #2d374f;
-  border-radius: 10px;
-
-  font-weight: bold;
-  cursor: pointer;
-
-  transition:
-    transform 0.15s ease,
-    border-color 0.15s ease,
-    background 0.15s ease;
-}
-
-button:hover {
-  background: #182033;
-  border-color: #ff9f1c;
-  transform: translateY(-1px);
-}
-
-#player-options {
-  margin-top: 18px;
-}
-
-#player-options button {
-  text-align: center;
-  background: rgba(18, 24, 38, 0.95);
-}
-
-#player-options button:hover {
-  background: rgba(255, 159, 28, 0.12);
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#team-list {
-  width: min(520px, 100%);
-  margin: 10px auto 0;
-  padding: 16px;
-  border: 1px solid #263044;
-  border-radius: 12px;
-  background: rgba(18, 24, 38, 0.65);
-}
-
-li {
-  margin: 8px 0;
-  color: #dce3f2;
-}
-
-#simulate-button {
-  margin-top: 24px;
-  background: linear-gradient(135deg, #ff9f1c, #ffbf69);
-  color: #111;
-  border: none;
-}
-
-#simulate-button:hover {
-  background: linear-gradient(135deg, #ffb347, #ffd166);
-}
-
-#result {
-  margin-top: 28px;
-  font-size: 30px;
-}
-
-#score-breakdown {
-  width: min(520px, 100%);
-  margin: 20px auto;
-  padding: 18px;
-  border: 1px solid #263044;
-  border-radius: 12px;
-  background: rgba(18, 24, 38, 0.75);
-}
-
-#score-breakdown:empty {
-    display: none;
-  }
-
-#score-breakdown h3 {
-  color: #ffb347;
-}
-
-#play-again-button {
-  margin-top: 24px;
-}
-
-#sidebar {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-
-#sidebar button {
-  width: auto;
-  padding: 10px 16px;
-  font-size: 13px;
-}
-
-#slot-team-name {
-  font-size: 28px;
-  font-weight: bold;
-  color: #f5f7fb;
-}
-
-#reroll-button {
-  all: unset;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  margin: 16px auto;
-  cursor: pointer;
-
-  color: #ffd966;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-#reroll-button:hover {
-  color: #ffec99;
-}
-
-.reroll-icon {
-  font-size: 18px;
-  line-height: 1;
-}
-
-#how-to-play-page {
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 16px 24px 40px;
-  text-align: left;
-  line-height: 1.6;
-}
-
-#how-to-play-page h1,
-#how-to-play-page h2 {
-  text-align: left;
-}
-
-#how-to-play-page p {
-  font-size: 15px;
-}
-
-#how-to-play-page ul {
-  list-style: disc;
-  padding-left: 30px;
-}
-
-#how-to-play-page table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 18px 0;
-  background: rgba(18, 24, 38, 0.8);
-}
-
-#how-to-play-page th,
-#how-to-play-page td {
-  border: 1px solid #2d374f;
-  padding: 10px;
-}
-
-#how-to-tabs {
-  text-align: center;
-  margin: 24px 0;
-}
-
-#how-to-tabs button {
-  display: inline-block;
-  width: 180px;
-  margin: 5px;
-}
-
-.team-pool-card {
-  border: 1px solid #263044;
-  border-radius: 10px;
-  background: rgba(18, 24, 38, 0.75);
-  padding: 12px 16px;
-  margin-bottom: 10px;
-}
-
-.back-button {
-  max-width: 240px;
-  margin: 20px auto 40px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:visited {
-  color: inherit;
-}
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 48px;
-  }
-
-  #sidebar {
-    position: static;
-    margin-top: 10px;
-  }
-
-  #game-screen,
-  #launch-screen {
-    padding-top: 24px;
-  }
-
-  button {
-    max-width: 100%;
-  }
-
-}
-
-.game-logo {
-  display: block;
-  width: 180px;
-  max-width: 80%;
-  height: auto;
-  margin: 10px auto 18px auto;
-
-  filter: drop-shadow(0 0 18px rgba(255, 159, 28, 0.25));
-}
-
-.disabled-role-button {
-  opacity: 0.35;
-  cursor: not-allowed;
-  border-color: #333;
-  color: #777;
-}
-
-.disabled-role-button:hover {
-  background: #121826;
-  border-color: #333;
-  transform: none;
-}
-
-#launch-screen {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-}
-
-#launch-footer {
-  position: absolute;
-  bottom: 78px;
-
-  left: 0;
-  right: 0;
-
-  text-align: center;
-}
-
-#launch-footer p {
-  margin: 6px 0;
-}
-
-#launch-footer a {
-  color: #ffb347;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-#launch-footer a:hover {
-  color: #ffd966;
-  text-decoration: underline;
-}
-
-.footer-disclaimer {
-  color: #6f7a8f;
-  font-size: 12px;
-}
-
-#bottom-footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 24px;
-
-  width: 100%;
-}
-
-.footer-divider {
-  width: 100%;
-  height: 1px;
-  background: rgba(255,255,255,0.12);
-
-  margin-bottom: 18px;
-}
-
-.footer-bottom-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: min(1050px, 70%);
-  margin: 0 auto;
-
-  font-size: 12px;
-  color: #8b95a7;
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.footer-links a {
-  color: #c7d0e0;
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  color: #ffb347;
-}
-
-.twitter-icon {
-  width: 14px;
-  height: 14px;
-  display: block;
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
-}
-
-.twitter-icon:hover {
-  opacity: 1;
-}
-
-h1,
-h2,
-#draft-title,
-#slot-team-name,
-#result {
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 700;
-}
-
-#player-options button,
-#sidebar button {
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-}
-
-#player-options button {
-  text-align: center;
-  background: rgba(18, 24, 38, 0.95);
-
-  font-size: 19px;
-  font-weight: 600;
-}
-
-#launch-screen button {
-  width: min(520px, 100%);
-  max-width: none;
-
-  padding: 18px;
-
-  background: rgba(18, 24, 38, 0.95);
-  border: 1px solid #2d374f;
-  border-radius: 10px;
-
-  color: #f5f7fb;
-
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 19px;
-  font-weight: 600;
-
-  text-align: center;
-}
-
-#launch-screen button:hover {
-  background: rgba(255, 159, 28, 0.12);
-  border-color: #ff9f1c;
-  transform: translateY(-1px);
-}
-
-/* How To Play page buttons */
-
-#how-to-tabs button,
-.back-button {
-  background: rgba(18, 24, 38, 0.95);
-  border: 1px solid #2d374f;
-  color: #f5f7fb;
-
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-
-  transition:
-    transform 0.15s ease,
-    border-color 0.15s ease,
-    background 0.15s ease;
-}
-
-#how-to-tabs button:hover,
-.back-button:hover {
-  background: rgba(255, 159, 28, 0.12);
-  border-color: #ff9f1c;
-  transform: translateY(-1px);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - 87-0</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="how-to-play-page">
+
+  <h1>Privacy Policy</h1>
+
+  <p><strong>Effective Date:</strong> June 2026</p>
+
+  <p>
+    At 87-0, accessible from 87-0.com, protecting the privacy of our visitors is important to us.
+    This Privacy Policy explains what information may be collected when you use the website and
+    how that information is used.
+  </p>
+
+  <h2>1. Information We Collect</h2>
+
+  <p>
+    87-0 does not require users to create accounts and does not collect personally identifiable
+    information such as names, email addresses, or passwords.
+  </p>
+
+  <p>
+    Like most websites, basic technical information may be collected automatically through
+    server logs or analytics services. This may include:
+  </p>
+
+  <ul>
+    <li>IP address</li>
+    <li>Browser type and version</li>
+    <li>Device type</li>
+    <li>Referring pages</li>
+    <li>Date and time of visits</li>
+    <li>Pages viewed</li>
+  </ul>
+
+  <h2>2. How Information Is Used</h2>
+
+  <p>
+    Any information collected is used solely to:
+  </p>
+
+  <ul>
+    <li>Operate and maintain the website</li>
+    <li>Improve site performance and user experience</li>
+    <li>Analyze traffic and usage trends</li>
+    <li>Prevent abuse and security issues</li>
+  </ul>
+
+  <h2>3. Cookies</h2>
+
+  <p>
+    87-0 may use cookies or similar technologies to improve functionality and user experience.
+    Cookies are small files stored on your device by your web browser.
+  </p>
+
+  <p>
+    You can disable cookies through your browser settings at any time.
+  </p>
+
+  <h2>4. Third-Party Services</h2>
+
+  <p>
+    87-0 may use third-party services to operate and improve the website. These services may
+    collect information in accordance with their own privacy policies.
+  </p>
+
+  <ul>
+    <li>Vercel (website hosting)</li>
+    <li>Google Analytics (if enabled)</li>
+    <li>Google AdSense or other advertising providers (if enabled)</li>
+    <li>Ko-fi (donation processing)</li>
+    <li>Google Forms (feedback collection)</li>
+  </ul>
+
+  <h2>5. Advertising</h2>
+
+  <p>
+    If advertising is displayed on 87-0, advertising partners may use cookies and similar
+    technologies to serve relevant advertisements.
+  </p>
+
+  <p>
+    Users can learn more about Google's advertising practices at:
+  </p>
+
+  <p>
+    <a href="https://policies.google.com/technologies/ads" target="_blank">
+      Google Advertising Policy
+    </a>
+  </p>
 
+  <h2>6. External Links</h2>
+
+  <p>
+    87-0 may contain links to external websites. We are not responsible for the privacy
+    practices or content of those third-party websites.
+  </p>
+
+  <h2>7. Children's Privacy</h2>
+
+  <p>
+    87-0 is not directed toward children under the age of 13 and does not knowingly collect
+    personal information from children.
+  </p>
+
+  <h2>8. Changes to This Policy</h2>
+
+  <p>
+    We may update this Privacy Policy periodically. Any updates will be posted on this page
+    with a revised effective date.
+  </p>
+
+  <h2>9. Contact</h2>
+
+  <p>
+    Questions regarding this Privacy Policy can be sent through the feedback form linked on
+    the website.
+  </p>
+
+  <br>
+
+  <button class="back-button" onclick="window.location.href='/'">
+    Back to Game
+  </button>
+
+</div>
+
+</body>
+</html>
