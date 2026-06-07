@@ -73,13 +73,18 @@ function showPlayers(useCurrentTeamYear = false) {
     const player = currentTeamYear.players[i];
 
     const button = document.createElement("button");
-    button.textContent = player.name + " | " + player.roles.join(" / ");
+      button.textContent = player.name + " | " + player.roles.join(" / ");
 
-    button.onclick = function () {
-      showRoleChoices(player, currentTeamYear);
-    };
+      if (!canPlayerFillRemainingRole(player)) {
+        button.disabled = true;
+        button.classList.add("disabled-role-button");
+      } else {
+        button.onclick = function () {
+          showRoleChoices(player, currentTeamYear);
+        };
+      }
 
-    optionsDiv.appendChild(button);
+      optionsDiv.appendChild(button);
   }
 
   updateSimulateButton();
@@ -253,16 +258,50 @@ function showRoleChoices(player, teamYear) {
       "Available Slots: " + availableRoles.map(role => role.slot).join(", ");
   }
 
-  for (let i = 0; i < availableRoles.length; i++) {
-    const roleButton = document.createElement("button");
-    roleButton.textContent = availableRoles[i].slot;
+  for (let i = 0; i < requiredRoles.length; i++) {
+  const playerCanPlayRole =
+    playerCanFillRole(player, requiredRoles[i].role);
 
-    roleButton.onclick = function () {
-      draftPlayerWithRole(player, teamYear, availableRoles[i]);
-    };
-
-    optionsDiv.appendChild(roleButton);
+  if (!playerCanPlayRole) {
+    continue;
   }
+
+  const roleButton = document.createElement("button");
+
+  let roleAlreadyFilled = false;
+
+  for (let j = 0; j < team.length; j++) {
+    if (team[j].draftedSlot === requiredRoles[i].slot) {
+      roleAlreadyFilled = true;
+      break;
+    }
+  }
+
+  let displayName = requiredRoles[i].slot;
+
+  if (
+    displayName === "Rifler 1" ||
+    displayName === "Rifler 2"
+  ) {
+    displayName = "Rifler";
+  }
+
+  roleButton.textContent = displayName;
+
+  if (roleAlreadyFilled) {
+    continue;
+  }
+
+  roleButton.onclick = function () {
+    draftPlayerWithRole(
+      player,
+      teamYear,
+      requiredRoles[i]
+    );
+  };
+
+  optionsDiv.appendChild(roleButton);
+}
 
   const backButton = document.createElement("button");
   backButton.textContent = "Back";
