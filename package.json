@@ -1,0 +1,27 @@
+{
+  "name": "primary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "how-to-play.js",
+  "scripts": {
+    "build": "esbuild speed-insights.js --bundle --minify --outfile=dist/speed-insights.min.js --format=iife",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kneecourt/87-0.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kneecourt/87-0/issues"
+  },
+  "homepage": "https://github.com/kneecourt/87-0#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
+  }
+}
