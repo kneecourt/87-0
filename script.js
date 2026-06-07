@@ -411,7 +411,7 @@ function spinForTeam() {
   }
 
   let spins = 0;
-  const maxSpins = 20;
+  const maxSpins = 50;
 
   const spinInterval = setInterval(function () {
     const randomIndex = Math.floor(Math.random() * validTeams.length);
@@ -439,7 +439,7 @@ function spinForTeam() {
         }
       }, 500);
     }
-  }, 80);
+  }, 40);
 }
 
 function updateTeam() {
@@ -585,9 +585,7 @@ function simulateEra() {
     consistencyScore * 0.25;
 
   let cohesionScore = getCohesionScore();
-  if (cohesionScore > 0) {
-    eraScore += cohesionScore;
-  }
+  eraScore += cohesionScore;
 
   let bestFirepower = Math.max(
     iglPlayer.firepower,
@@ -766,5 +764,61 @@ function toggleHowToPlay() {
     panel.style.display = "block";
   }
 }
+
+window.testRoster = function () {
+  team = [
+    {
+      name: "s1mple",
+      draftedRole: "AWPer",
+      draftedSlot: "AWPer",
+      firepower: 100,
+      consistency: 95,
+      team: "Natus Vincere",
+      year: 2019
+    },
+    {
+      name: "olofmeister",
+      draftedRole: "Rifler",
+      draftedSlot: "Rifler 1",
+      firepower: 95,
+      consistency: 90,
+      team: "LGB eSports",
+      year: 2014
+    },
+    {
+      name: "gla1ve",
+      draftedRole: "IGL",
+      draftedSlot: "IGL",
+      firepower: 78,
+      consistency: 92,
+      igl: 99,
+      team: "Astralis",
+      year: 2018
+    },
+    {
+      name: "Stewie2K",
+      draftedRole: "Rifler",
+      draftedSlot: "Rifler 2",
+      firepower: 87,
+      consistency: 86,
+      team: "Team Liquid",
+      year: 2019
+    },
+    {
+      name: "Dosia",
+      draftedRole: "Support",
+      draftedSlot: "Support",
+      firepower: 85,
+      consistency: 91,
+      support: 92,
+      team: "Gambit",
+      year: 2017
+    }
+  ];
+
+  updateTeam();
+  updateTeamSection();
+  updateSimulateButton();
+};
 
 updateSimulateButton();
