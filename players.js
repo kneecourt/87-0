@@ -301,7 +301,7 @@ const teamYears = [
     year: "2015",
     players: [
       { name: "Zeus", roles: ["IGL"], firepower: 65, consistency: 83, support: 87, igl: 91 },
-      { name: "Guardian", roles: ["AWPer"], firepower: 96, consistency: 94 },
+      { name: "GuardiaN", roles: ["AWPer"], firepower: 96, consistency: 94 },
       { name: "flamie", roles: ["Rifler"], firepower: 91, consistency: 88 },
       { name: "Edward", roles: ["Rifler"], firepower: 80, consistency: 88 },
       { name: "seized", roles: ["Support"], firepower: 80, consistency: 86, support: 92 }
@@ -313,7 +313,7 @@ const teamYears = [
     year: "2016",
     players: [
       { name: "Zeus", roles: ["IGL"], firepower: 65, consistency: 83, support: 87, igl: 90 },
-      { name: "Guardian", roles: ["AWPer"], firepower: 95, consistency: 94 },
+      { name: "GuardiaN", roles: ["AWPer"], firepower: 95, consistency: 94 },
       { name: "flamie", roles: ["Rifler"], firepower: 89, consistency: 88 },
       { name: "Edward", roles: ["Support", "Rifler"], firepower: 79, consistency: 88, support: 87 },
       { name: "seized", roles: ["Rifler", "IGL"], firepower: 85, consistency: 86, igl: 86 },
